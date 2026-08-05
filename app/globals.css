@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  /* Backgrounds */
+  --color-canvas: #F5F7F1;
+  --color-surface: #FCFBF6;
+  --color-surface-2: #EFF3E9;
+
+  /* Ink / text */
+  --color-ink: #21302A;
+  --color-ink-soft: #4B5C54;
+  --color-ink-faint: #8A9A91;
+
+  /* Brand — deep forest teal (trust, clinical calm) */
+  --color-brand-950: #0E2622;
+  --color-brand-900: #163A33;
+  --color-brand-800: #1F4E45;
+  --color-brand-700: #2A6559;
+  --color-brand-500: #3E8574;
+  --color-brand-200: #C9DFD6;
+  --color-brand-100: #E4EFE9;
+
+  /* Accent — marigold (warmth, energy, growth) */
+  --color-marigold-600: #D98A12;
+  --color-marigold-500: #F4A825;
+  --color-marigold-300: #FBCE7F;
+  --color-marigold-100: #FCEFD6;
+
+  /* Secondary accent — periwinkle (calm, playful) */
+  --color-sky-600: #5A76A3;
+  --color-sky-500: #7C93BF;
+  --color-sky-200: #DCE4F1;
+
+  /* Borders */
+  --color-line: #E1E7DA;
+
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-body: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-signature: 2rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Signature: hand-drawn growth path underline for headline emphasis */
+.path-underline {
+  position: relative;
+  white-space: nowrap;
+}
+.path-underline svg {
+  position: absolute;
+  left: 0;
+  bottom: -0.18em;
+  width: 100%;
+  height: 0.35em;
+}
+
+/* Focus visibility for keyboard nav */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-marigold-500);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
