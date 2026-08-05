@@ -5,6 +5,9 @@ import ServiceCard from "@/components/ServiceCard";
 import ProcessSteps from "@/components/ProcessSteps";
 import Testimonials from "@/components/Testimonials";
 import { SERVICES } from "@/lib/services";
+import DotGrid from "@/components/decor/DotGrid";
+import ZigzagAccent from "@/components/decor/ZigzagAccent";
+import BlockAccent from "@/components/decor/BlockAccent";
 import aboutChild from "@/public/images/about-child.jpg";
 import processChild from "@/public/images/process-child.jpg";
 import ctaChildren from "@/public/images/cta-children.jpg";
@@ -59,6 +62,10 @@ export default function HomePage() {
           </div>
           <div className="relative order-1 mx-auto w-full max-w-sm md:order-2 md:max-w-none">
             <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-marigold-100 md:-inset-4" />
+            <DotGrid
+              className="absolute -right-9 -top-9 hidden md:block"
+              color="var(--color-sky-500)"
+            />
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] shadow-[0_25px_50px_-20px_rgba(31,78,69,0.35)]">
               <Image
                 src={aboutChild}
@@ -68,13 +75,25 @@ export default function HomePage() {
                 className="object-cover"
               />
             </div>
+            <ZigzagAccent
+              className="absolute -bottom-4 left-4 z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)]"
+              color="var(--color-marigold-500)"
+            />
           </div>
         </div>
       </section>
 
       {/* Kenapa Pilih Kami */}
-      <section className="bg-brand-950 py-20">
-        <div className="mx-auto grid max-w-6xl gap-12 px-5 md:grid-cols-2 md:items-center md:px-8">
+      <section className="relative overflow-hidden bg-brand-950 py-20">
+        <BlockAccent
+          className="pointer-events-none absolute -bottom-2 left-0 opacity-90"
+          color="var(--color-sky-500)"
+        />
+        <ZigzagAccent
+          className="pointer-events-none absolute -right-2 -top-2 opacity-80"
+          color="var(--color-marigold-400)"
+        />
+        <div className="relative mx-auto grid max-w-6xl gap-12 px-5 md:grid-cols-2 md:items-center md:px-8">
           <div className="relative mx-auto w-full max-w-sm md:max-w-none">
             <div className="relative aspect-[5/4] w-full overflow-hidden rounded-[1.75rem] shadow-[0_25px_50px_-15px_rgba(0,0,0,0.5)]">
               <Image
@@ -85,6 +104,16 @@ export default function HomePage() {
                 className="object-cover"
               />
             </div>
+            <ZigzagAccent
+              className="absolute -top-4 left-4 z-10 hidden drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)] md:block"
+              color="var(--color-marigold-400)"
+            />
+            <DotGrid
+              className="absolute -bottom-7 left-1/2 -translate-x-1/2"
+              color="var(--color-sky-500)"
+              rows={2}
+              cols={6}
+            />
           </div>
           <div>
             <span className="text-xs font-semibold uppercase tracking-wide text-marigold-400">

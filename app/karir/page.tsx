@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import ConsultationButton from "@/components/ConsultationButton";
+import DotGrid from "@/components/decor/DotGrid";
+import ZigzagAccent from "@/components/decor/ZigzagAccent";
 import karirTeam from "@/public/images/karir-team.jpg";
 
 export const metadata: Metadata = {
@@ -59,13 +61,23 @@ export default function KarirPage() {
               />
             </div>
           </div>
-          <div className="relative mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-[1.75rem] shadow-[0_25px_50px_-20px_rgba(31,78,69,0.35)] md:max-w-none">
-            <Image
-              src={karirTeam}
-              alt="Tim GenSA Kidz berdiskusi"
-              fill
-              sizes="(min-width: 768px) 40vw, 90vw"
-              className="object-cover"
+          <div className="relative mx-auto w-full max-w-md md:max-w-none">
+            <DotGrid
+              className="absolute -right-9 -top-9 hidden md:block"
+              color="var(--color-marigold-500)"
+            />
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] shadow-[0_25px_50px_-20px_rgba(31,78,69,0.35)]">
+              <Image
+                src={karirTeam}
+                alt="Tim GenSA Kidz berdiskusi"
+                fill
+                sizes="(min-width: 768px) 40vw, 90vw"
+                className="object-cover"
+              />
+            </div>
+            <ZigzagAccent
+              className="absolute -bottom-4 left-4 z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)]"
+              color="var(--color-brand-500)"
             />
           </div>
         </div>
