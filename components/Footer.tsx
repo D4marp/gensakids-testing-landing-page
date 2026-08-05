@@ -55,6 +55,19 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+          <h3 className="mt-6 font-display text-sm font-semibold text-surface">Lainnya</h3>
+          <ul className="mt-4 space-y-2.5 text-sm text-brand-200">
+            <li>
+              <Link href="/artikel" className="hover:text-marigold-300">
+                Artikel Tumbuh Kembang
+              </Link>
+            </li>
+            <li>
+              <Link href="/karir" className="hover:text-marigold-300">
+                Karir
+              </Link>
+            </li>
+          </ul>
         </div>
 
         <div>

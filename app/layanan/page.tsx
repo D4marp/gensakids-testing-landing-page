@@ -13,10 +13,22 @@ import {
 import { SERVICES } from "@/lib/services";
 import serviceSpeech from "@/public/images/service-speech.jpg";
 import serviceOccupational from "@/public/images/service-occupational.jpg";
+import serviceFisioterapi from "@/public/images/service-fisioterapi.jpg";
+import servicePerilaku from "@/public/images/service-perilaku.jpg";
+import serviceOrtopedagogik from "@/public/images/service-ortopedagogik.jpg";
+import servicePsikologi from "@/public/images/service-psikologi.jpg";
+import serviceStimulasi from "@/public/images/service-stimulasi.jpg";
+import serviceAsesmen from "@/public/images/service-asesmen.jpg";
 
 const SERVICE_IMAGES: Partial<Record<string, typeof serviceSpeech>> = {
+  "asesmen-tumbuh-kembang": serviceAsesmen,
   "terapi-wicara": serviceSpeech,
   "terapi-okupasi": serviceOccupational,
+  fisioterapi: serviceFisioterapi,
+  "terapi-perilaku": servicePerilaku,
+  ortopedagogik: serviceOrtopedagogik,
+  "psikologi-anak": servicePsikologi,
+  "stimulasi-anak": serviceStimulasi,
 };
 
 export const metadata: Metadata = {
@@ -56,9 +68,10 @@ export default function LayananPage() {
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8">
         <div className="flex flex-col gap-14">
-          {SERVICES.map((service) => {
+          {SERVICES.map((service, index) => {
             const Icon = ICONS[service.icon];
             const image = SERVICE_IMAGES[service.slug];
+            const imageOnRight = image && index % 2 === 1;
             return (
               <div
                 key={service.slug}
@@ -68,7 +81,11 @@ export default function LayananPage() {
                 }`}
               >
                 {image ? (
-                  <div className="relative min-h-[220px] w-full md:min-h-full">
+                  <div
+                    className={`relative min-h-[220px] w-full md:min-h-full ${
+                      imageOnRight ? "md:order-2" : ""
+                    }`}
+                  >
                     <Image
                       src={image}
                       alt={service.title}
@@ -82,7 +99,7 @@ export default function LayananPage() {
                     <Icon className="h-8 w-8" />
                   </span>
                 )}
-                <div className="p-8 md:p-10">
+                <div className={`p-8 md:p-10 ${imageOnRight ? "md:order-1" : ""}`}>
                   {image && (
                     <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-100 text-brand-800">
                       <Icon className="h-6 w-6" />

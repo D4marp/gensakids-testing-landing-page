@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import ConsultationButton from "./ConsultationButton";
 
 const NAV_LINKS = [
   { href: "/tentang", label: "Tentang Kami" },
   { href: "/layanan", label: "Layanan" },
-  { href: "/#jadwal", label: "Jadwal & Lokasi" },
+  { href: "/artikel", label: "Artikel" },
+  { href: "/karir", label: "Karir" },
   { href: "/kontak", label: "Kontak" },
 ];
 
@@ -25,7 +27,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 md:flex">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -37,14 +39,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <a
-          href="https://wa.me/6281311992012?text=Halo%20GenSA%20Kidz%2C%20saya%20ingin%20konsultasi%20tumbuh%20kembang%20anak."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden rounded-full bg-marigold-500 px-5 py-2.5 text-[15px] font-semibold text-brand-950 shadow-sm transition-transform hover:scale-[1.03] hover:bg-marigold-600 md:inline-block"
-        >
-          Daftar Konsultasi
-        </a>
+        <ConsultationButton className="hidden rounded-full bg-marigold-500 px-5 py-2.5 text-[15px] font-semibold text-brand-950 shadow-sm transition-transform hover:scale-[1.03] hover:bg-marigold-600 md:inline-block" />
 
         <button
           type="button"
@@ -71,14 +66,7 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <a
-            href="https://wa.me/6281311992012?text=Halo%20GenSA%20Kidz%2C%20saya%20ingin%20konsultasi%20tumbuh%20kembang%20anak."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 rounded-full bg-marigold-500 px-5 py-2.5 text-center text-[15px] font-semibold text-brand-950"
-          >
-            Daftar Konsultasi
-          </a>
+          <ConsultationButton className="mt-2 rounded-full bg-marigold-500 px-5 py-2.5 text-center text-[15px] font-semibold text-brand-950" />
         </nav>
       )}
     </header>
