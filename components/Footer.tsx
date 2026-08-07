@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import logo from "@/public/images/logo.png";
 
 const LAYANAN = [
   "Terapi Wicara",
@@ -14,12 +16,7 @@ export default function Footer() {
     <footer className="border-t border-line bg-brand-950 text-brand-100">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-4 md:px-8">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-marigold-500 font-display text-base font-semibold text-brand-950">
-              G
-            </span>
-            <span className="font-display text-lg font-semibold text-surface">GenSA Kidz</span>
-          </div>
+          <Image src={logo} alt="GenSA Kidz" className="h-11 w-auto" />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-brand-200">
             Pusat layanan terapi dan stimulasi tumbuh kembang anak di Lamongan —
             one-stop solution untuk anak umum maupun anak berkebutuhan khusus (ABK), usia 0–16 tahun.

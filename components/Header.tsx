@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import ConsultationButton from "./ConsultationButton";
+import logo from "@/public/images/logo.png";
 
 const NAV_LINKS = [
   { href: "/tentang", label: "Tentang Kami" },
@@ -18,13 +20,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-surface/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
-        <Link href="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-800 font-display text-base font-semibold text-surface">
-            G
-          </span>
-          <span className="font-display text-lg font-semibold tracking-tight text-brand-900">
-            GenSA Kidz
-          </span>
+        <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
+          <Image src={logo} alt="GenSA Kidz" className="h-11 w-auto" priority />
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
