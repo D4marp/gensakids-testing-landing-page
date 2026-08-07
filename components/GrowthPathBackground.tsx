@@ -16,7 +16,7 @@ export default function GrowthPathBackground() {
       />
       <circle cx="150" cy="590" r="6" fill="var(--color-marigold-300)" />
       <circle cx="420" cy="560" r="8" fill="var(--color-brand-200)" />
-      <circle cx="860" cy="460" r="6" fill="var(--color-sky-200)" />
+      <circle cx="860" cy="460" r="6" fill="var(--color-indigo-200)" />
       <circle cx="1150" cy="300" r="9" fill="var(--color-marigold-300)" />
     </svg>
   );

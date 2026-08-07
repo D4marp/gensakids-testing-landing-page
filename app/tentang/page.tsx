@@ -44,7 +44,7 @@ export default function TentangPage() {
           <div className="relative mx-auto w-full max-w-md md:max-w-none">
             <DotGrid
               className="absolute -right-9 -top-9 hidden md:block"
-              color="var(--color-sky-500)"
+              color="var(--color-indigo-500)"
             />
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] shadow-[0_25px_50px_-20px_rgba(31,78,69,0.35)]">
               <Image

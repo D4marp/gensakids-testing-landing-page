@@ -1,6 +1,6 @@
 export default function BlockAccent({
   className = "",
-  color = "var(--color-sky-500)",
+  color = "var(--color-indigo-500)",
 }: {
   className?: string;
   color?: string;

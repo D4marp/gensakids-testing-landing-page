@@ -5,6 +5,7 @@ import ServiceCard from "@/components/ServiceCard";
 import ProcessSteps from "@/components/ProcessSteps";
 import Testimonials from "@/components/Testimonials";
 import { SERVICES } from "@/lib/services";
+import { BRANCHES } from "@/lib/branches";
 import DotGrid from "@/components/decor/DotGrid";
 import ZigzagAccent from "@/components/decor/ZigzagAccent";
 import BlockAccent from "@/components/decor/BlockAccent";
@@ -64,7 +65,7 @@ export default function HomePage() {
             <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-marigold-100 md:-inset-4" />
             <DotGrid
               className="absolute -right-9 -top-9 hidden md:block"
-              color="var(--color-sky-500)"
+              color="var(--color-indigo-500)"
             />
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] shadow-[0_25px_50px_-20px_rgba(31,78,69,0.35)]">
               <Image
@@ -87,7 +88,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-brand-950 py-20">
         <BlockAccent
           className="pointer-events-none absolute -bottom-2 left-0 opacity-90"
-          color="var(--color-sky-500)"
+          color="var(--color-indigo-500)"
         />
         <ZigzagAccent
           className="pointer-events-none absolute -right-2 -top-2 opacity-80"
@@ -110,7 +111,7 @@ export default function HomePage() {
             />
             <DotGrid
               className="absolute -bottom-7 left-1/2 -translate-x-1/2"
-              color="var(--color-sky-500)"
+              color="var(--color-coral-500)"
               rows={2}
               cols={6}
             />
@@ -213,44 +214,60 @@ export default function HomePage() {
 
       {/* Jadwal & Lokasi */}
       <section id="jadwal" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-20 md:px-8">
-        <div className="grid gap-10 rounded-[2rem] border border-line bg-surface p-8 md:grid-cols-2 md:p-12">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wide text-marigold-600">
-              Jadwal & Lokasi
-            </span>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-brand-950">
-              Kunjungi Klinik GenSA Kidz
-            </h2>
-            <dl className="mt-6 space-y-4 text-[15px] text-ink-soft">
+        <div className="flex flex-col gap-3 md:max-w-xl">
+          <span className="text-xs font-semibold uppercase tracking-wide text-marigold-600">
+            Jadwal & Lokasi
+          </span>
+          <h2 className="font-display text-3xl font-semibold text-brand-950 md:text-4xl">
+            Kunjungi Klinik GenSA Kidz — 2 Cabang di Lamongan
+          </h2>
+          <p className="text-[15px] text-ink-soft">
+            Jam layanan: Senin – Sabtu, sesuai jadwal janji temu.
+          </p>
+        </div>
+        <div className="mt-8 grid gap-8 md:grid-cols-2">
+          {BRANCHES.map((branch) => (
+            <div
+              key={branch.slug}
+              className="grid gap-6 rounded-[2rem] border border-line bg-surface p-8"
+            >
               <div>
-                <dt className="font-semibold text-ink">Alamat</dt>
-                <dd>Ruko Tambakboyo Regency No. 01–02, Tikung, Lamongan, Jawa Timur 62281</dd>
+                <h3 className="font-display text-xl font-semibold text-brand-950">
+                  {branch.name}
+                </h3>
+                <dl className="mt-4 space-y-3 text-[15px] text-ink-soft">
+                  <div>
+                    <dt className="font-semibold text-ink">Alamat</dt>
+                    <dd>{branch.address}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-ink">Kontak</dt>
+                    <dd>
+                      WA{" "}
+                      <a
+                        href={`https://wa.me/${branch.whatsapp}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-brand-800 underline"
+                      >
+                        +{branch.whatsapp}
+                      </a>
+                      {branch.phone && <> atau (0322) 314966</>}
+                    </dd>
+                  </div>
+                </dl>
               </div>
-              <div>
-                <dt className="font-semibold text-ink">Jam Layanan</dt>
-                <dd>Senin – Sabtu, sesuai jadwal janji temu</dd>
+              <div className="min-h-[220px] overflow-hidden rounded-2xl border border-line">
+                <iframe
+                  title={`Lokasi ${branch.name}`}
+                  src={`https://www.google.com/maps?q=${branch.mapsQuery}&output=embed`}
+                  className="h-full w-full"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
-              <div>
-                <dt className="font-semibold text-ink">Kontak</dt>
-                <dd>
-                  WA/Telp{" "}
-                  <a href="https://wa.me/6281311992012" className="text-brand-800 underline">
-                    +62 813-1199-2012
-                  </a>{" "}
-                  atau (0322) 314966
-                </dd>
-              </div>
-            </dl>
-          </div>
-          <div className="min-h-[280px] overflow-hidden rounded-3xl border border-line">
-            <iframe
-              title="Lokasi GenSA Kidz"
-              src="https://www.google.com/maps?q=Ruko+Tambakboyo+Regency+Tikung+Lamongan&output=embed"
-              className="h-full w-full"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 

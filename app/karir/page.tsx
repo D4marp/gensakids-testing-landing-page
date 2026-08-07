@@ -77,7 +77,7 @@ export default function KarirPage() {
             </div>
             <ZigzagAccent
               className="absolute -bottom-4 left-4 z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)]"
-              color="var(--color-brand-500)"
+              color="var(--color-leaf-500)"
             />
           </div>
         </div>

@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { BRANCHES } from "@/lib/branches";
 
-const WA_LINK =
-  "https://wa.me/6281311992012?text=Halo%20GenSA%20Kidz%2C%20saya%20ingin%20konsultasi%20tumbuh%20kembang%20anak.";
+const MESSAGE = "Halo GenSA Kidz, saya ingin konsultasi tumbuh kembang anak.";
 
 export default function ConsultationButton({
   className,
@@ -54,23 +54,20 @@ export default function ConsultationButton({
               Konsultasi Tumbuh Kembang
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-              Pilih cara termudah untuk terhubung dengan tim GenSA Kidz.
+              Pilih cabang terdekat untuk terhubung langsung via WhatsApp.
             </p>
             <div className="mt-6 flex flex-col gap-3">
-              <a
-                href={WA_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-brand-800 px-6 py-3 text-center text-sm font-semibold text-surface transition-colors hover:bg-brand-700"
-              >
-                Chat via WhatsApp
-              </a>
-              <a
-                href="tel:0322314966"
-                className="rounded-full border border-line px-6 py-3 text-center text-sm font-semibold text-brand-900 transition-colors hover:bg-surface-2"
-              >
-                Telepon Klinik
-              </a>
+              {BRANCHES.map((branch) => (
+                <a
+                  key={branch.slug}
+                  href={`https://wa.me/${branch.whatsapp}?text=${encodeURIComponent(MESSAGE)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-brand-800 px-6 py-3 text-center text-sm font-semibold text-surface transition-colors hover:bg-brand-700"
+                >
+                  Chat {branch.name} via WhatsApp
+                </a>
+              ))}
               <a
                 href="/kontak"
                 onClick={() => setOpen(false)}

@@ -49,7 +49,7 @@ export default function Hero() {
           <div className="absolute -inset-4 -z-10 rounded-[2.5rem] border-2 border-dashed border-brand-500/30 md:-inset-6" />
           <DotGrid
             className="absolute -right-9 -top-9 hidden md:block"
-            color="var(--color-brand-500)"
+            color="var(--color-leaf-500)"
           />
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-[0_30px_60px_-20px_rgba(14,38,34,0.4)] md:rounded-[2.5rem]">
             <Image
@@ -67,7 +67,7 @@ export default function Hero() {
           />
           <DotGrid
             className="absolute -bottom-9 -right-9"
-            color="var(--color-sky-500)"
+            color="var(--color-indigo-500)"
           />
 
           <div className="absolute -bottom-6 -left-4 flex items-center gap-3 rounded-2xl bg-surface px-5 py-4 shadow-[0_20px_40px_-15px_rgba(31,78,69,0.35)] md:-left-8">

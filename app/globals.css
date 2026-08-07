@@ -26,10 +26,16 @@
   --color-marigold-300: #FBCE7F;
   --color-marigold-100: #FCEFD6;
 
-  /* Secondary accent — periwinkle (calm, playful) */
-  --color-sky-600: #5A76A3;
-  --color-sky-500: #7C93BF;
-  --color-sky-200: #DCE4F1;
+  /* Secondary accent — indigo (from the GenSA Kidz logo mark) */
+  --color-indigo-600: #4A4E9E;
+  --color-indigo-500: #5B5FC7;
+  --color-indigo-200: #DBDCF3;
+
+  /* Playful logo accents — used sparingly for decorative highlights */
+  --color-leaf-500: #3E9B4F;
+  --color-leaf-200: #D3EDD8;
+  --color-coral-500: #E5484D;
+  --color-coral-200: #F9D9DA;
 
   /* Borders */
   --color-line: #E1E7DA;

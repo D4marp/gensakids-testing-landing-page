@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/images/logo.png";
+import { BRANCHES } from "@/lib/branches";
 
 const LAYANAN = [
   "Terapi Wicara",
@@ -67,21 +68,30 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
-          <h3 className="font-display text-sm font-semibold text-surface">Kontak</h3>
-          <ul className="mt-4 space-y-2.5 text-sm text-brand-200">
-            <li>Ruko Tambakboyo Regency No. 01–02,<br />Tikung, Lamongan, Jawa Timur 62281</li>
-            <li>
-              <a href="https://wa.me/6281311992012" className="hover:text-marigold-300">
-                WA: +62 813-1199-2012
-              </a>
-            </li>
-            <li>
-              <a href="tel:0322314966" className="hover:text-marigold-300">
-                Telp: (0322) 314966
-              </a>
-            </li>
-          </ul>
+        <div className="flex flex-col gap-6">
+          {BRANCHES.map((branch) => (
+            <div key={branch.slug}>
+              <h3 className="font-display text-sm font-semibold text-surface">{branch.name}</h3>
+              <ul className="mt-3 space-y-2 text-sm text-brand-200">
+                <li>{branch.address}</li>
+                <li>
+                  <a
+                    href={`https://wa.me/${branch.whatsapp}`}
+                    className="hover:text-marigold-300"
+                  >
+                    WA: +{branch.whatsapp}
+                  </a>
+                </li>
+                {branch.phone && (
+                  <li>
+                    <a href={`tel:${branch.phone}`} className="hover:text-marigold-300">
+                      Telp: (0322) 314966
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
 
