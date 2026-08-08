@@ -5,3 +5,15 @@ out
 npm-debug.log*
 .DS_Store
 next-env.d.ts
+
+# Raw photo dumps — only the curated, actually-used files are committed under public/images
+public/images/Foto Kegiatan/
+public/images/Foto Dayli GenSA Kidz/**
+!public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto1.jpg
+!public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto3.jpg
+!public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto7.jpg
+!public/images/Foto Dayli GenSA Kidz/Gensa kidz Babat/Foto5.jpg
+!public/images/Foto Dayli GenSA Kidz/Gensa kidz Babat/Foto6.jpg
+!public/images/Foto Dayli GenSA Kidz/Gensa kidz Babat/foto21.jpeg
+public/images/foto terapis/ASS*
+public/images/foto terapis/PD*
