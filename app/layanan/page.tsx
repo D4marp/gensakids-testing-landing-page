@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
 import {
   IconSpeech,
@@ -11,30 +12,13 @@ import {
   IconClipboard,
 } from "@/components/icons";
 import { SERVICES } from "@/lib/services";
-import serviceSpeech from "@/public/images/service-speech.jpg";
-import serviceOccupational from "@/public/images/service-occupational.jpg";
-import serviceFisioterapi from "@/public/images/service-fisioterapi.jpg";
-import servicePerilaku from "@/public/images/service-perilaku.jpg";
-import serviceOrtopedagogik from "@/public/images/service-ortopedagogik.jpg";
-import servicePsikologi from "@/public/images/service-psikologi.jpg";
-import serviceStimulasi from "@/public/images/service-stimulasi.jpg";
-import serviceAsesmen from "@/public/images/service-asesmen.jpg";
-
-const SERVICE_IMAGES: Partial<Record<string, typeof serviceSpeech>> = {
-  "asesmen-tumbuh-kembang": serviceAsesmen,
-  "terapi-wicara": serviceSpeech,
-  "terapi-okupasi": serviceOccupational,
-  fisioterapi: serviceFisioterapi,
-  "terapi-perilaku": servicePerilaku,
-  ortopedagogik: serviceOrtopedagogik,
-  "psikologi-anak": servicePsikologi,
-  "stimulasi-anak": serviceStimulasi,
-};
+import { FACILITIES } from "@/lib/facilities";
+import { SERVICE_IMAGES } from "@/lib/serviceImages";
 
 export const metadata: Metadata = {
   title: "Layanan — GenSA Kidz",
   description:
-    "Terapi Wicara, Terapi Okupasi, Fisioterapi, Terapi Perilaku, Ortopedagogik, Psikologi Anak, dan Stimulasi Anak 0–16 Tahun di GenSA Kidz Lamongan.",
+    "Terapi Wicara, Terapi Okupasi, Fisioterapi, Terapi Perilaku, Ortopedagogik, Psikologi Anak, dan Stimulasi Anak 0–16 Tahun di GenSA Kidz Lamongan & Babat.",
 };
 
 const ICONS = {
@@ -46,6 +30,14 @@ const ICONS = {
   heart: IconHeartHead,
   growth: IconGrowth,
   clipboard: IconClipboard,
+};
+
+const FACILITY_ICONS = {
+  clipboard: IconClipboard,
+  hands: IconHands,
+  puzzle: IconPuzzle,
+  book: IconBook,
+  heart: IconHeartHead,
 };
 
 export default function LayananPage() {
@@ -61,76 +53,87 @@ export default function LayananPage() {
           </h1>
           <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ink-soft">
             Setiap layanan diawali dengan konsultasi dan asesmen agar penanganan yang
-            diberikan benar-benar sesuai kebutuhan anak.
+            diberikan benar-benar sesuai kebutuhan anak. Tersedia di cabang Lamongan & Babat.
           </p>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8">
-        <div className="flex flex-col gap-14">
-          {SERVICES.map((service, index) => {
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map((service) => {
             const Icon = ICONS[service.icon];
             const image = SERVICE_IMAGES[service.slug];
-            const imageOnRight = image && index % 2 === 1;
             return (
-              <div
+              <Link
                 key={service.slug}
-                id={service.slug}
-                className={`grid scroll-mt-24 items-stretch gap-0 overflow-hidden rounded-[2rem] border border-line bg-surface ${
-                  image ? "md:grid-cols-[0.85fr_1fr]" : "md:grid-cols-[auto_1fr]"
-                }`}
+                href={`/layanan/${service.slug}`}
+                className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-15px_rgba(31,78,69,0.3)]"
               >
-                {image ? (
-                  <div
-                    className={`relative min-h-[220px] w-full md:min-h-full ${
-                      imageOnRight ? "md:order-2" : ""
-                    }`}
-                  >
+                {image && (
+                  <div className="relative aspect-[16/10] w-full overflow-hidden">
                     <Image
                       src={image}
                       alt={service.title}
                       fill
-                      sizes="(min-width: 768px) 35vw, 100vw"
-                      className="object-cover"
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                ) : (
-                  <span className="m-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-100 text-brand-800 md:mb-0">
-                    <Icon className="h-8 w-8" />
-                  </span>
                 )}
-                <div className={`p-8 md:p-10 ${imageOnRight ? "md:order-1" : ""}`}>
-                  {image && (
-                    <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-100 text-brand-800">
-                      <Icon className="h-6 w-6" />
-                    </span>
-                  )}
-                  <h2 className="font-display text-2xl font-semibold text-brand-950">
+                <div className="flex flex-1 flex-col gap-3 p-6">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-100 text-brand-800">
+                    <Icon className="h-6 w-6" />
+                  </span>
+                  <h2 className="font-display text-lg font-semibold text-brand-950">
                     {service.title}
                   </h2>
-                  <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">{service.short}</p>
-                  <ul className="mt-5 space-y-2">
-                    {service.detail.map((line) => (
-                      <li key={line} className="flex gap-2.5 text-[15px] text-ink-soft">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-marigold-500" />
-                        {line}
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    href={`https://wa.me/6281311992012?text=Halo%20GenSA%20Kidz%2C%20saya%20ingin%20tanya%20soal%20layanan%20${encodeURIComponent(
-                      service.title
-                    )}.`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-6 inline-block rounded-full bg-brand-800 px-6 py-3 text-sm font-semibold text-surface hover:bg-brand-700"
-                  >
-                    Tanya via WhatsApp
-                  </a>
+                  <p className="text-sm leading-relaxed text-ink-soft">{service.short}</p>
+                  <span className="mt-auto pt-2 text-sm font-semibold text-brand-800 underline decoration-marigold-500 decoration-2 underline-offset-4">
+                    Lihat Detail Layanan
+                  </span>
                 </div>
-              </div>
+              </Link>
             );
           })}
+        </div>
+      </section>
+
+      {/* Fasilitas */}
+      <section className="bg-surface-2 px-5 py-16 md:px-8 md:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col gap-3 md:max-w-xl">
+            <span className="text-xs font-semibold uppercase tracking-wide text-marigold-600">
+              Fasilitas
+            </span>
+            <h2 className="font-display text-3xl font-semibold text-brand-950 md:text-4xl">
+              Fasilitas pendukung layanan GenSA Kidz
+            </h2>
+            <p className="text-[15px] text-ink-soft">
+              Tersedia di cabang Lamongan maupun Babat untuk mendukung kenyamanan anak dan
+              orang tua selama sesi berlangsung.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {FACILITIES.map((facility) => {
+              const Icon = FACILITY_ICONS[facility.icon];
+              return (
+                <div
+                  key={facility.title}
+                  className="flex flex-col gap-3 rounded-3xl border border-line bg-surface p-6"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-marigold-100 text-marigold-600">
+                    <Icon className="h-6 w-6" />
+                  </span>
+                  <h3 className="font-display text-base font-semibold text-brand-900">
+                    {facility.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-ink-soft">
+                    {facility.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
     </>

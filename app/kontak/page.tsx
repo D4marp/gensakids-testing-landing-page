@@ -20,6 +20,24 @@ export default function KontakPage() {
             Ceritakan kebutuhan anak Anda, tim kami di cabang Lamongan maupun Babat akan
             membalas secepatnya melalui WhatsApp.
           </p>
+          <div className="mt-5 flex gap-3">
+            <a
+              href="https://www.instagram.com/gensakidz/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-brand-200 bg-surface px-4 py-2 text-sm font-medium text-brand-800 hover:bg-brand-100"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://www.facebook.com/GenSAKidz/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-brand-200 bg-surface px-4 py-2 text-sm font-medium text-brand-800 hover:bg-brand-100"
+            >
+              Facebook
+            </a>
+          </div>
         </div>
       </section>
 

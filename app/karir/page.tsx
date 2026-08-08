@@ -3,12 +3,14 @@ import Image from "next/image";
 import ConsultationButton from "@/components/ConsultationButton";
 import DotGrid from "@/components/decor/DotGrid";
 import ZigzagAccent from "@/components/decor/ZigzagAccent";
-import karirTeam from "@/public/images/karir-team.jpg";
+import karirTeam from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto1.jpg";
+import { JOBS, APPLY_EMAIL } from "@/lib/jobs";
+import { ACTIVITY_PHOTOS } from "@/lib/activityPhotos";
 
 export const metadata: Metadata = {
   title: "Karir — GenSA Kidz",
   description:
-    "Bergabung bersama tim GenSA Kidz — pusat layanan terapi dan stimulasi tumbuh kembang anak di Lamongan. Lihat posisi yang terbuka dan cara melamar.",
+    "Bergabung bersama tim GenSA Kidz — layanan terapi dan stimulasi tumbuh kembang anak di Lamongan & Babat. Lihat posisi yang terbuka dan cara melamar.",
 };
 
 const WHY_JOIN = [
@@ -26,17 +28,13 @@ const WHY_JOIN = [
   },
 ];
 
-const OPEN_ROLES = [
-  "Terapis Wicara",
-  "Terapis Okupasi",
-  "Fisioterapis Anak",
-  "Psikolog Anak",
-  "Guru Ortopedagogik / Pendidikan Khusus",
-  "Admin & Customer Service Klinik",
-];
-
-const APPLY_LINK =
-  "https://wa.me/6281311992012?text=Halo%20GenSA%20Kidz%2C%20saya%20ingin%20menanyakan%20informasi%20lowongan%20kerja.";
+function mailtoLink(jobTitle: string) {
+  const subject = encodeURIComponent(`Lamaran Kerja — ${jobTitle}`);
+  const body = encodeURIComponent(
+    `Halo tim GenSA Kidz,\n\nSaya ingin melamar posisi ${jobTitle}. Berikut saya lampirkan CV dan dokumen pendukung.\n\nTerima kasih.`
+  );
+  return `mailto:${APPLY_EMAIL}?subject=${subject}&body=${body}`;
+}
 
 export default function KarirPage() {
   return (
@@ -52,7 +50,7 @@ export default function KarirPage() {
             </h1>
             <p className="mt-5 text-[17px] leading-relaxed text-ink-soft">
               Kami selalu terbuka untuk profesional yang ingin berkontribusi mendampingi
-              anak-anak di Lamongan mencapai potensi tumbuh kembang terbaiknya.
+              anak-anak di Lamongan & Babat mencapai potensi tumbuh kembang terbaiknya.
             </p>
             <div className="mt-6">
               <ConsultationButton
@@ -69,7 +67,7 @@ export default function KarirPage() {
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] shadow-[0_25px_50px_-20px_rgba(31,78,69,0.35)]">
               <Image
                 src={karirTeam}
-                alt="Tim GenSA Kidz berdiskusi"
+                alt="Sesi terapi anak di GenSA Kidz Lamongan"
                 fill
                 sizes="(min-width: 768px) 40vw, 90vw"
                 className="object-cover"
@@ -98,42 +96,121 @@ export default function KarirPage() {
             Posisi Terbuka
           </span>
           <h2 className="mt-3 font-display text-2xl font-semibold text-brand-950 md:text-3xl">
-            Posisi yang biasa kami cari
+            Lowongan di GenSA Kidz
           </h2>
           <p className="mt-3 max-w-xl text-[15px] text-ink-soft">
-            Ketersediaan posisi dapat berubah sewaktu-waktu. Hubungi kami untuk informasi
-            lowongan yang sedang dibuka saat ini.
+            Kirim lamaran lengkap (CV & dokumen pendukung) langsung ke email di bawah tiap
+            posisi.
           </p>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {OPEN_ROLES.map((role) => (
-              <li
-                key={role}
-                className="flex items-center gap-3 rounded-2xl border border-line bg-surface px-5 py-4 text-[15px] font-medium text-brand-900"
+
+          <div className="mt-8 flex flex-col gap-6">
+            {JOBS.map((job) => (
+              <div
+                key={job.slug}
+                className="rounded-3xl border border-line bg-surface p-7 md:p-8"
               >
-                <span className="h-2 w-2 shrink-0 rounded-full bg-marigold-500" />
-                {role}
-              </li>
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="font-display text-xl font-semibold text-brand-950">
+                        {job.title}
+                      </h3>
+                      <span
+                        className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                          job.status === "Dibuka"
+                            ? "bg-leaf-200 text-leaf-500"
+                            : "bg-surface-2 text-ink-faint"
+                        }`}
+                      >
+                        {job.status}
+                      </span>
+                    </div>
+                    <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-faint">
+                      <span>📍 {job.branch}</span>
+                      <span>🕐 {job.type}</span>
+                    </div>
+                  </div>
+                  {job.status === "Dibuka" ? (
+                    <a
+                      href={mailtoLink(job.title)}
+                      className="whitespace-nowrap rounded-full bg-brand-800 px-6 py-3 text-sm font-semibold text-surface transition-colors hover:bg-brand-700"
+                    >
+                      Lamar via Email
+                    </a>
+                  ) : (
+                    <span className="whitespace-nowrap rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink-faint">
+                      Lowongan Ditutup
+                    </span>
+                  )}
+                </div>
+
+                <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
+                  {job.description}
+                </p>
+
+                <h4 className="mt-5 text-sm font-semibold text-brand-900">Persyaratan</h4>
+                <ul className="mt-2 space-y-1.5">
+                  {job.requirements.map((req) => (
+                    <li key={req} className="flex gap-2.5 text-sm text-ink-soft">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-marigold-500" />
+                      {req}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <span className="text-xs font-semibold uppercase tracking-wide text-marigold-600">
+            Keseharian Kami
+          </span>
+          <h2 className="mt-3 font-display text-2xl font-semibold text-brand-950 md:text-3xl">
+            Kegiatan Sehari-hari di GenSA Kidz
+          </h2>
+          <p className="mt-3 max-w-xl text-[15px] text-ink-soft">
+            Momen sesi terapi dan stimulasi anak di cabang Lamongan & Babat.
+          </p>
+          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3">
+            {ACTIVITY_PHOTOS.map((item, i) => (
+              <div
+                key={i}
+                className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl"
+              >
+                <Image
+                  src={item.photo}
+                  alt={`Kegiatan di GenSA Kidz ${item.branch}`}
+                  fill
+                  sizes="(min-width: 768px) 30vw, 45vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <span className="absolute bottom-3 left-3 rounded-full bg-surface/90 px-3 py-1 text-xs font-semibold text-brand-800">
+                  {item.branch}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="mt-16 flex flex-col items-start gap-6 rounded-[2rem] bg-brand-950 p-10 text-brand-100 md:flex-row md:items-center md:justify-between md:p-14">
           <div>
             <h2 className="font-display text-2xl font-semibold text-surface md:text-3xl">
-              Tertarik bergabung dengan GenSA Kidz?
+              Tidak menemukan posisi yang sesuai?
             </h2>
             <p className="mt-2 max-w-md text-[15px] text-brand-200">
-              Kirimkan CV dan minat posisi Anda melalui WhatsApp, tim kami akan menghubungi
-              kembali untuk proses selanjutnya.
+              Kirimkan CV Anda ke{" "}
+              <a href={`mailto:${APPLY_EMAIL}`} className="underline decoration-marigold-400">
+                {APPLY_EMAIL}
+              </a>
+              , tim kami akan menghubungi bila ada posisi yang sesuai.
             </p>
           </div>
           <a
-            href={APPLY_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`mailto:${APPLY_EMAIL}`}
             className="whitespace-nowrap rounded-full bg-marigold-500 px-7 py-3.5 text-[15px] font-semibold text-brand-950 shadow-lg transition-transform hover:scale-[1.02] hover:bg-marigold-600"
           >
-            Kirim Lamaran via WhatsApp
+            Kirim CV via Email
           </a>
         </div>
       </section>

@@ -3,7 +3,8 @@ import Image from "next/image";
 import FAQAccordion from "@/components/FAQAccordion";
 import DotGrid from "@/components/decor/DotGrid";
 import ZigzagAccent from "@/components/decor/ZigzagAccent";
-import aboutHero from "@/public/images/cta-children.jpg";
+import aboutHero from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Babat/Foto5.jpg";
+import { TEAM } from "@/lib/team";
 
 export const metadata: Metadata = {
   title: "Tentang Kami — GenSA Kidz",
@@ -49,7 +50,7 @@ export default function TentangPage() {
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] shadow-[0_25px_50px_-20px_rgba(31,78,69,0.35)]">
               <Image
                 src={aboutHero}
-                alt="Anak-anak bermain bersama di GenSA Kidz"
+                alt="Sesi terapi anak di GenSA Kidz Babat"
                 fill
                 sizes="(min-width: 768px) 40vw, 90vw"
                 className="object-cover"
@@ -97,6 +98,22 @@ export default function TentangPage() {
               >
                 {role}
               </span>
+            ))}
+          </div>
+          <div className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
+            {TEAM.map((member) => (
+              <div key={member.name} className="flex flex-col items-center gap-3 text-center">
+                <div className="relative aspect-square w-full overflow-hidden rounded-2xl shadow-[0_14px_30px_-15px_rgba(31,78,69,0.3)]">
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    fill
+                    sizes="(min-width: 768px) 15vw, 30vw"
+                    className="object-cover"
+                  />
+                </div>
+                <p className="text-sm font-semibold text-brand-900">{member.name}</p>
+              </div>
             ))}
           </div>
         </div>

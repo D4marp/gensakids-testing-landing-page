@@ -40,11 +40,10 @@ lib/services.ts      -> Data 8 layanan (judul, deskripsi, ikon)
 
 - [ ] Nomor WhatsApp & telepon — masih memakai data yang Anda berikan, cek ulang keakuratannya.
 - [ ] Testimoni di `components/Testimonials.tsx` masih **placeholder** — ganti dengan testimoni asli.
-- [ ] Foto/gambar nyata (tim, klinik, kegiatan anak) — saat ini belum ada gambar foto,
-      hanya ikon & ilustrasi vektor.
+- [ ] Foto/gambar nyata (tim, layanan, kegiatan anak) — saat ini masih pakai foto stok.
 - [ ] Statistik di beranda (tahun berdiri, jumlah layanan) sudah faktual dari data yang
       Anda berikan; tambahkan jumlah pasien/sesi jika ada datanya.
-- [ ] Sesuaikan jam operasional klinik di section "Jadwal & Lokasi" (belum ada info jam pasti).
+- [ ] Sesuaikan jam operasional layanan di section "Jadwal & Lokasi" (belum ada info jam pasti).
 
 ## Catatan teknis
 

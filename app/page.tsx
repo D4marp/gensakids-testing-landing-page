@@ -219,7 +219,7 @@ export default function HomePage() {
             Jadwal & Lokasi
           </span>
           <h2 className="font-display text-3xl font-semibold text-brand-950 md:text-4xl">
-            Kunjungi Klinik GenSA Kidz — 2 Cabang di Lamongan
+            Kunjungi Layanan GenSA Kidz — 2 Cabang di Lamongan
           </h2>
           <p className="text-[15px] text-ink-soft">
             Jam layanan: Senin – Sabtu, sesuai jadwal janji temu.
