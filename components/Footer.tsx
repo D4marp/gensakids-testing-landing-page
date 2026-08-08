@@ -39,6 +39,14 @@ export default function Footer() {
             >
               Facebook
             </a>
+            <a
+              href="https://www.tiktok.com/@gensa.kidz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-brand-700 px-3 py-1.5 text-xs font-medium text-brand-100 hover:bg-brand-900"
+            >
+              TikTok
+            </a>
           </div>
         </div>
 
