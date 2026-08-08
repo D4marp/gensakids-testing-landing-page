@@ -9,9 +9,9 @@ import { BRANCHES } from "@/lib/branches";
 import DotGrid from "@/components/decor/DotGrid";
 import ZigzagAccent from "@/components/decor/ZigzagAccent";
 import BlockAccent from "@/components/decor/BlockAccent";
-import aboutChild from "@/public/images/about-child.jpg";
-import processChild from "@/public/images/process-child.jpg";
-import ctaChildren from "@/public/images/cta-children.jpg";
+import aboutChild from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto2.png";
+import processChild from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto13.jpg";
+import ctaChildren from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto4.jpg";
 
 const BADGES = [
   { label: "Berdiri sejak", value: "2020" },
@@ -70,7 +70,7 @@ export default function HomePage() {
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] shadow-[0_25px_50px_-20px_rgba(31,78,69,0.35)]">
               <Image
                 src={aboutChild}
-                alt="Anak-anak bermain sambil belajar di GenSA Kidz"
+                alt="Sesi terapi kelompok anak-anak di GenSA Kidz Lamongan"
                 fill
                 sizes="(min-width: 768px) 40vw, 90vw"
                 className="object-cover"
@@ -99,7 +99,7 @@ export default function HomePage() {
             <div className="relative aspect-[5/4] w-full overflow-hidden rounded-[1.75rem] shadow-[0_25px_50px_-15px_rgba(0,0,0,0.5)]">
               <Image
                 src={processChild}
-                alt="Pendamping menemani anak dalam sesi konsultasi"
+                alt="Terapis mendampingi anak secara personal di GenSA Kidz"
                 fill
                 sizes="(min-width: 768px) 40vw, 90vw"
                 className="object-cover"

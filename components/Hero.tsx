@@ -3,7 +3,7 @@ import Squiggle from "./Squiggle";
 import GrowthPathBackground from "./GrowthPathBackground";
 import DotGrid from "./decor/DotGrid";
 import ZigzagAccent from "./decor/ZigzagAccent";
-import heroChild from "@/public/images/hero-child.jpg";
+import heroChild from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto14.jpg";
 
 export default function Hero() {
   return (
@@ -54,7 +54,7 @@ export default function Hero() {
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-[0_30px_60px_-20px_rgba(14,38,34,0.4)] md:rounded-[2.5rem]">
             <Image
               src={heroChild}
-              alt="Anak dan pendamping berbagi momen hangat di GenSA Kidz"
+              alt="Terapis mendampingi anak berlatih motorik di GenSA Kidz"
               fill
               priority
               sizes="(min-width: 768px) 40vw, 90vw"
