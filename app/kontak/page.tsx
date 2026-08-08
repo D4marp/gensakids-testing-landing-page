@@ -45,6 +45,14 @@ export default function KontakPage() {
             >
               TikTok
             </a>
+            <a
+              href="https://www.linkedin.com/company/gensa-kidz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-brand-200 bg-surface px-4 py-2 text-sm font-medium text-brand-800 hover:bg-brand-100"
+            >
+              LinkedIn
+            </a>
           </div>
         </div>
       </section>

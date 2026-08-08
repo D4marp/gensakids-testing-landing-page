@@ -12,14 +12,22 @@ export const metadata: Metadata = {
     "GenSA Kidz adalah pusat layanan terapi tumbuh kembang anak di Lamongan sejak 2020, didampingi tim evaluator perkembangan dan terapis berpengalaman.",
 };
 
+const MISI = [
+  "Memberikan layanan deteksi dini yang komprehensif melalui asesmen menyeluruh guna memetakan potensi dan profil perkembangan unik setiap anak secara akurat sejak dini.",
+  "Menyusun program stimulasi dan intervensi yang dipersonalisasi guna memastikan setiap anak mendapatkan penanganan yang spesifik dan tepat sasaran sesuai dengan fase perkembangannya.",
+  "Menghadirkan pusat layanan terpadu satu atap yang mengintegrasikan berbagai disiplin terapi dan dukungan psikologi anak secara sinergis, memudahkan akses bagi orang tua dalam satu lokasi.",
+  "Menyelaraskan kolaborasi tim ahli lintas disiplin untuk memberikan solusi penanganan yang holistik, berkesinambungan, dan terkoordinasi bagi setiap tantangan tumbuh kembang anak.",
+  "Memberdayakan peran orang tua sebagai mitra utama melalui edukasi berkelanjutan dan komunikasi transparan, demi keberhasilan perkembangan anak yang konsisten baik di layanan maupun di rumah.",
+  "Menciptakan lingkungan yang inklusif, aman, dan penuh kasih yang menghargai keberagaman cara belajar setiap anak, sehingga mereka merasa nyaman dalam berekspresi dan berkembang.",
+  "Menjaga standar keunggulan layanan secara berkelanjutan dengan senantiasa mengikuti perkembangan ilmu pengetahuan dan teknologi terkini di bidang kesehatan dan tumbuh kembang anak.",
+];
+
 const TEAM_ROLES = [
-  "Evaluator Perkembangan Anak",
   "Terapis Wicara",
   "Terapis Okupasi",
-  "Fisioterapis",
+  "Fisioterapi",
   "Terapis Perilaku",
   "Guru Ortopedagogik",
-  "Psikolog Anak",
 ];
 
 export default function TentangPage() {
@@ -65,6 +73,34 @@ export default function TentangPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8">
+        <div className="rounded-[2rem] bg-brand-950 p-8 text-brand-100 md:p-12">
+          <span className="text-xs font-semibold uppercase tracking-wide text-marigold-400">
+            Visi
+          </span>
+          <p className="mt-4 max-w-3xl font-display text-xl italic leading-relaxed text-surface md:text-2xl">
+            “Menjadi pusat layanan tumbuh kembang anak secara inklusif yang terintegrasi
+            dengan program keberlanjutan anak sesuai dengan potensi perkembangannya, serta
+            memberikan pendampingan terbaik kepada keluarga dalam mewujudkan masa depan anak
+            secara optimal.”
+          </p>
+
+          <span className="mt-10 block text-xs font-semibold uppercase tracking-wide text-marigold-400">
+            Misi
+          </span>
+          <ol className="mt-4 grid gap-4 md:grid-cols-2">
+            {MISI.map((item, i) => (
+              <li key={item} className="flex gap-3 text-[15px] leading-relaxed text-brand-200">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-800 text-xs font-semibold text-surface">
+                  {i + 1}
+                </span>
+                {item}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 pb-16 md:px-8">
         <div className="grid gap-10 md:grid-cols-2">
           <div className="rounded-3xl border border-line bg-surface p-8">
             <h2 className="font-display text-xl font-semibold text-brand-900">Pendekatan Kami</h2>
@@ -85,12 +121,19 @@ export default function TentangPage() {
         </div>
 
         <div className="mt-14">
-          <h2 className="font-display text-2xl font-semibold text-brand-950">Tim Kami</h2>
-          <p className="mt-2 max-w-xl text-[15px] text-ink-soft">
-            Ditangani oleh evaluator perkembangan dan terapis lintas disiplin yang
-            berkolaborasi untuk setiap anak.
+          <h2 className="font-display text-2xl font-semibold text-brand-950">
+            Tim Ahli Multidisiplin Kami
+          </h2>
+          <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-ink-soft">
+            Setiap anak mendapatkan penanganan yang komprehensif melalui kolaborasi lintas
+            divisi. Evaluasi tumbuh kembang dilakukan secara kolektif oleh tim terapis ahli
+            dan divalidasi langsung oleh Psikolog Klinis untuk memastikan ketajaman program
+            terapi yang dipersonalisasi.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
+            <span className="rounded-full bg-marigold-500 px-4 py-2 text-sm font-semibold text-brand-950">
+              Psikolog Klinis Tumbuh Kembang Anak
+            </span>
             {TEAM_ROLES.map((role) => (
               <span
                 key={role}

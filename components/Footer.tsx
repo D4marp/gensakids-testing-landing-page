@@ -47,6 +47,14 @@ export default function Footer() {
             >
               TikTok
             </a>
+            <a
+              href="https://www.linkedin.com/company/gensa-kidz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-brand-700 px-3 py-1.5 text-xs font-medium text-brand-100 hover:bg-brand-900"
+            >
+              LinkedIn
+            </a>
           </div>
         </div>
 

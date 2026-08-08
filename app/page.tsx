@@ -16,7 +16,7 @@ import ctaChildren from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamong
 const BADGES = [
   { label: "Berdiri sejak", value: "2020" },
   { label: "Rentang usia", value: "0–16 Tahun" },
-  { label: "Jenis layanan", value: "8 Program" },
+  { label: "Jenis layanan", value: "8 Layanan Terpadu" },
   { label: "Pendekatan", value: "One-Stop Solution" },
 ];
 
