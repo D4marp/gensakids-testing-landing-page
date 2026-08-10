@@ -7,7 +7,15 @@ npm-debug.log*
 next-env.d.ts
 
 # Raw photo dumps — only the curated, actually-used files are committed under public/images
-public/images/Foto Kegiatan/
+public/images/Foto Kegiatan/*
+!public/images/Foto Kegiatan/2.png
+!public/images/Foto Kegiatan/3.png
+!public/images/Foto Kegiatan/6.png
+!public/images/Foto Kegiatan/8.png
+!public/images/Foto Kegiatan/11.png
+!public/images/Foto Kegiatan/14.png
+!public/images/Foto Kegiatan/17.png
+!public/images/Foto Kegiatan/18.png
 public/images/Foto Dayli GenSA Kidz/*
 !public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan
 !public/images/Foto Dayli GenSA Kidz/Gensa kidz Babat

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import FAQAccordion from "@/components/FAQAccordion";
+import TeamFilter from "@/components/TeamFilter";
 import DotGrid from "@/components/decor/DotGrid";
 import ZigzagAccent from "@/components/decor/ZigzagAccent";
 import aboutHero from "@/public/images/foto terapis/Tentang kami.png";
@@ -20,14 +21,6 @@ const MISI = [
   "Memberdayakan peran orang tua sebagai mitra utama melalui edukasi berkelanjutan dan komunikasi transparan, demi keberhasilan perkembangan anak yang konsisten baik di layanan maupun di rumah.",
   "Menciptakan lingkungan yang inklusif, aman, dan penuh kasih yang menghargai keberagaman cara belajar setiap anak, sehingga mereka merasa nyaman dalam berekspresi dan berkembang.",
   "Menjaga standar keunggulan layanan secara berkelanjutan dengan senantiasa mengikuti perkembangan ilmu pengetahuan dan teknologi terkini di bidang kesehatan dan tumbuh kembang anak.",
-];
-
-const TEAM_ROLES = [
-  "Terapis Wicara",
-  "Terapis Okupasi",
-  "Fisioterapi",
-  "Terapis Perilaku",
-  "Guru Ortopedagogik",
 ];
 
 export default function TentangPage() {
@@ -130,38 +123,7 @@ export default function TentangPage() {
             dan divalidasi langsung oleh Psikolog Klinis untuk memastikan ketajaman program
             terapi yang dipersonalisasi.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <span className="rounded-full bg-marigold-500 px-4 py-2 text-sm font-semibold text-brand-950">
-              Psikolog Klinis Tumbuh Kembang Anak
-            </span>
-            {TEAM_ROLES.map((role) => (
-              <span
-                key={role}
-                className="rounded-full border border-line bg-surface px-4 py-2 text-sm font-medium text-brand-800"
-              >
-                {role}
-              </span>
-            ))}
-          </div>
-          <div className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
-            {TEAM.map((member) => (
-              <div key={member.name} className="flex flex-col items-center gap-3 text-center">
-                <div className="relative aspect-square w-full overflow-hidden rounded-2xl shadow-[0_14px_30px_-15px_rgba(31,78,69,0.3)]">
-                  <Image
-                    src={member.photo}
-                    alt={`${member.name} — ${member.role}`}
-                    fill
-                    sizes="(min-width: 1024px) 13vw, (min-width: 768px) 20vw, 30vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-brand-900">{member.name}</p>
-                  <p className="text-xs text-ink-faint">{member.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <TeamFilter team={TEAM} />
         </div>
       </section>
 
