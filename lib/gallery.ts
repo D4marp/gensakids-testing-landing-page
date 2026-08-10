@@ -19,6 +19,7 @@ import fas5 from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto
 import fas6 from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto2.png";
 import fas7 from "@/public/images/foto terapis/Sampul.png";
 import fas8 from "@/public/images/foto terapis/Tentang Gensa.png";
+import fas9 from "@/public/images/Ruang Assessment dan Psikolog Anak.png";
 
 export const AKTIVITAS_PHOTOS = [
   { src: ak9, caption: "Terapi Wicara" },
@@ -36,11 +37,12 @@ export const AKTIVITAS_PHOTOS = [
 ];
 
 export const FASILITAS_PHOTOS = [
+  { src: fas9, caption: "Ruang Asesmen & Psikolog Anak" },
   { src: fas7, caption: "Ruang Stimulasi Motorik" },
   { src: fas6, caption: "Ruang Stimulasi Kelompok" },
   { src: fas1, caption: "Area Panjat & Motorik Kasar" },
   { src: fas2, caption: "Ruang Fisioterapi" },
-  { src: fas3, caption: "Ruang Asesmen Tumbuh Kembang" },
+  { src: fas3, caption: "Area Pengukuran Tumbuh Kembang" },
   { src: fas4, caption: "Ruang Terapi Individual" },
   { src: fas5, caption: "Area Sensori & Motorik" },
   { src: fas8, caption: "Ruang Bermain & Sensori" },

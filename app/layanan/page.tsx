@@ -119,17 +119,30 @@ export default function LayananPage() {
               return (
                 <div
                   key={facility.title}
-                  className="flex flex-col gap-3 rounded-3xl border border-line bg-surface p-6"
+                  className="flex flex-col gap-3 overflow-hidden rounded-3xl border border-line bg-surface"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-marigold-100 text-marigold-600">
-                    <Icon className="h-6 w-6" />
-                  </span>
-                  <h3 className="font-display text-base font-semibold text-brand-900">
-                    {facility.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-ink-soft">
-                    {facility.description}
-                  </p>
+                  {facility.photo && (
+                    <div className="relative aspect-[16/10] w-full">
+                      <Image
+                        src={facility.photo}
+                        alt={facility.title}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col gap-3 p-6">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-marigold-100 text-marigold-600">
+                      <Icon className="h-6 w-6" />
+                    </span>
+                    <h3 className="font-display text-base font-semibold text-brand-900">
+                      {facility.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-ink-soft">
+                      {facility.description}
+                    </p>
+                  </div>
                 </div>
               );
             })}
