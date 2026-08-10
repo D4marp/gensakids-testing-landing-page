@@ -16,11 +16,4 @@ export const BRANCHES: Branch[] = [
     phone: "0322314966",
     mapsQuery: "Ruko+Tambakboyo+Regency+Tikung+Lamongan",
   },
-  {
-    slug: "babat",
-    name: "GenSA Kidz Babat",
-    address: "Griya Agung Permata Blok B13, Plaosan, Babat, Lamongan, Jawa Timur",
-    whatsapp: "6281333414750",
-    mapsQuery: "Griya+Agung+Permata+Plaosan+Babat+Lamongan",
-  },
 ];

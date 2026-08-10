@@ -5,7 +5,7 @@ import serviceFisioterapi from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz
 import servicePerilaku from "@/public/images/foto terapis/PD 4.jpg";
 import serviceOrtopedagogik from "@/public/images/foto terapis/PD 3.jpg";
 import servicePsikologi from "@/public/images/foto terapis/PD 5.jpg";
-import serviceStimulasi from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Babat/Foto6.jpg";
+import serviceStimulasi from "@/public/images/Foto Kegiatan/17.png";
 
 export const SERVICE_IMAGES: Record<string, typeof serviceSpeech> = {
   "asesmen-tumbuh-kembang": serviceAsesmen,

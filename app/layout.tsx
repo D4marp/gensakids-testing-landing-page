@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { Baloo_2, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
 
-const fraunces = Fraunces({
+const baloo = Baloo_2({
   subsets: ["latin"],
   variable: "--font-fraunces",
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["500", "600", "700", "800"],
 });
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" className={`${fraunces.variable} ${plusJakarta.variable}`}>
+    <html lang="id" className={`${baloo.variable} ${plusJakarta.variable}`}>
       <body className="font-body antialiased">
         <Header />
         <main>{children}</main>

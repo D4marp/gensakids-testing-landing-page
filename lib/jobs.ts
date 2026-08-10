@@ -1,7 +1,7 @@
 export type Job = {
   slug: string;
   title: string;
-  branch: "Lamongan" | "Babat" | "Lamongan & Babat";
+  branch: "Lamongan";
   type: "Full-time" | "Part-time";
   status: "Dibuka" | "Ditutup";
   description: string;
@@ -12,7 +12,7 @@ export const JOBS: Job[] = [
   {
     slug: "terapis-wicara",
     title: "Terapis Wicara",
-    branch: "Lamongan & Babat",
+    branch: "Lamongan",
     type: "Full-time",
     status: "Dibuka",
     description:
@@ -22,13 +22,12 @@ export const JOBS: Job[] = [
       "Memiliki STR/sertifikasi profesi yang masih berlaku.",
       "Berpengalaman menangani anak menjadi nilai tambah, fresh graduate dipersilakan melamar.",
       "Sabar, komunikatif, dan senang bekerja dengan anak-anak.",
-      "Bersedia ditempatkan di cabang Lamongan maupun Babat.",
     ],
   },
   {
     slug: "terapis-okupasi",
     title: "Terapis Okupasi",
-    branch: "Lamongan & Babat",
+    branch: "Lamongan",
     type: "Full-time",
     status: "Dibuka",
     description:
@@ -38,7 +37,6 @@ export const JOBS: Job[] = [
       "Memiliki STR/sertifikasi profesi yang masih berlaku.",
       "Memahami pendekatan sensory integration menjadi nilai tambah.",
       "Sabar, telaten, dan senang bekerja dengan anak-anak.",
-      "Bersedia ditempatkan di cabang Lamongan maupun Babat.",
     ],
   },
   {
@@ -74,7 +72,7 @@ export const JOBS: Job[] = [
   {
     slug: "guru-ortopedagogik",
     title: "Guru Ortopedagogik / Pendidikan Khusus",
-    branch: "Babat",
+    branch: "Lamongan",
     type: "Part-time",
     status: "Dibuka",
     description:
@@ -88,7 +86,7 @@ export const JOBS: Job[] = [
   {
     slug: "admin-customer-service",
     title: "Admin & Customer Service",
-    branch: "Lamongan & Babat",
+    branch: "Lamongan",
     type: "Full-time",
     status: "Ditutup",
     description:

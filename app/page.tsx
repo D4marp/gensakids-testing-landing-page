@@ -16,7 +16,7 @@ import ctaChildren from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamong
 const BADGES = [
   { label: "Berdiri sejak", value: "2020" },
   { label: "Rentang usia", value: "0–16 Tahun" },
-  { label: "Jenis layanan", value: "8 Layanan Terpadu" },
+  { label: "Jenis layanan", value: "8 Layanan Terpadu dalam 1 Atap" },
   { label: "Pendekatan", value: "One-Stop Solution" },
 ];
 
@@ -85,14 +85,14 @@ export default function HomePage() {
       </section>
 
       {/* Kenapa Pilih Kami */}
-      <section className="relative overflow-hidden bg-brand-950 py-20">
+      <section className="relative overflow-hidden bg-indigo-200 py-20">
         <BlockAccent
-          className="pointer-events-none absolute -bottom-2 left-0 opacity-90"
+          className="pointer-events-none absolute -bottom-2 left-0 opacity-60"
           color="var(--color-indigo-500)"
         />
         <ZigzagAccent
-          className="pointer-events-none absolute -right-2 -top-2 opacity-80"
-          color="var(--color-marigold-400)"
+          className="pointer-events-none absolute -right-2 -top-2 opacity-70"
+          color="var(--color-marigold-500)"
         />
         <div className="relative mx-auto grid max-w-6xl gap-12 px-5 md:grid-cols-2 md:items-center md:px-8">
           <div className="relative mx-auto w-full max-w-sm md:max-w-none">
@@ -106,8 +106,8 @@ export default function HomePage() {
               />
             </div>
             <ZigzagAccent
-              className="absolute -top-4 left-4 z-10 hidden drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)] md:block"
-              color="var(--color-marigold-400)"
+              className="absolute -top-4 left-4 z-10 hidden drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] md:block"
+              color="var(--color-marigold-500)"
             />
             <DotGrid
               className="absolute -bottom-7 left-1/2 -translate-x-1/2"
@@ -117,10 +117,10 @@ export default function HomePage() {
             />
           </div>
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wide text-marigold-400">
+            <span className="text-xs font-semibold uppercase tracking-wide text-marigold-600">
               Kenapa Pilih Kami
             </span>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-surface md:text-4xl">
+            <h2 className="mt-3 font-display text-3xl font-semibold text-brand-950 md:text-4xl">
               Pendampingan yang personal, bukan sekadar sesi terapi
             </h2>
             <ul className="mt-6 space-y-5">
@@ -143,8 +143,8 @@ export default function HomePage() {
                     ✓
                   </span>
                   <div>
-                    <p className="font-semibold text-surface">{item.title}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-brand-200">{item.desc}</p>
+                    <p className="font-semibold text-brand-950">{item.title}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-ink-soft">{item.desc}</p>
                   </div>
                 </li>
               ))}
@@ -219,55 +219,48 @@ export default function HomePage() {
             Jadwal & Lokasi
           </span>
           <h2 className="font-display text-3xl font-semibold text-brand-950 md:text-4xl">
-            Kunjungi Layanan GenSA Kidz — 2 Cabang di Lamongan
+            Kunjungi Layanan GenSA Kidz di Lamongan
           </h2>
           <p className="text-[15px] text-ink-soft">
             Jam layanan: Senin – Sabtu, sesuai jadwal janji temu.
           </p>
         </div>
-        <div className="mt-8 grid gap-8 md:grid-cols-2">
-          {BRANCHES.map((branch) => (
-            <div
-              key={branch.slug}
-              className="grid gap-6 rounded-[2rem] border border-line bg-surface p-8"
-            >
+        <div className="mt-8 grid gap-8 rounded-[2rem] border border-line bg-surface p-8 md:grid-cols-2 md:items-center">
+          <div>
+            <h3 className="font-display text-xl font-semibold text-brand-950">
+              {BRANCHES[0].name}
+            </h3>
+            <dl className="mt-4 space-y-3 text-[15px] text-ink-soft">
               <div>
-                <h3 className="font-display text-xl font-semibold text-brand-950">
-                  {branch.name}
-                </h3>
-                <dl className="mt-4 space-y-3 text-[15px] text-ink-soft">
-                  <div>
-                    <dt className="font-semibold text-ink">Alamat</dt>
-                    <dd>{branch.address}</dd>
-                  </div>
-                  <div>
-                    <dt className="font-semibold text-ink">Kontak</dt>
-                    <dd>
-                      WA{" "}
-                      <a
-                        href={`https://wa.me/${branch.whatsapp}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-brand-800 underline"
-                      >
-                        +{branch.whatsapp}
-                      </a>
-                      {branch.phone && <> atau (0322) 314966</>}
-                    </dd>
-                  </div>
-                </dl>
+                <dt className="font-semibold text-ink">Alamat</dt>
+                <dd>{BRANCHES[0].address}</dd>
               </div>
-              <div className="min-h-[220px] overflow-hidden rounded-2xl border border-line">
-                <iframe
-                  title={`Lokasi ${branch.name}`}
-                  src={`https://www.google.com/maps?q=${branch.mapsQuery}&output=embed`}
-                  className="h-full w-full"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+              <div>
+                <dt className="font-semibold text-ink">Kontak</dt>
+                <dd>
+                  WA{" "}
+                  <a
+                    href={`https://wa.me/${BRANCHES[0].whatsapp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-800 underline"
+                  >
+                    +{BRANCHES[0].whatsapp}
+                  </a>
+                  {BRANCHES[0].phone && <> atau (0322) 314966</>}
+                </dd>
               </div>
-            </div>
-          ))}
+            </dl>
+          </div>
+          <div className="min-h-[260px] overflow-hidden rounded-2xl border border-line">
+            <iframe
+              title={`Lokasi ${BRANCHES[0].name}`}
+              src={`https://www.google.com/maps?q=${BRANCHES[0].mapsQuery}&output=embed`}
+              className="h-full w-full"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </div>
       </section>
 

@@ -77,6 +77,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/galeri" className="hover:text-marigold-300">
+                Galeri
+              </Link>
+            </li>
+            <li>
               <Link href="/karir" className="hover:text-marigold-300">
                 Karir
               </Link>

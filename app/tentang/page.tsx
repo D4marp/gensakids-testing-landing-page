@@ -3,7 +3,7 @@ import Image from "next/image";
 import FAQAccordion from "@/components/FAQAccordion";
 import DotGrid from "@/components/decor/DotGrid";
 import ZigzagAccent from "@/components/decor/ZigzagAccent";
-import aboutHero from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Babat/Foto5.jpg";
+import aboutHero from "@/public/images/foto terapis/Tentang kami.png";
 import { TEAM } from "@/lib/team";
 
 export const metadata: Metadata = {
@@ -58,7 +58,7 @@ export default function TentangPage() {
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] shadow-[0_25px_50px_-20px_rgba(31,78,69,0.35)]">
               <Image
                 src={aboutHero}
-                alt="Sesi terapi anak di GenSA Kidz Babat"
+                alt="Kegiatan bersama anak-anak di GenSA Kidz Lamongan"
                 fill
                 sizes="(min-width: 768px) 40vw, 90vw"
                 className="object-cover"
@@ -73,24 +73,24 @@ export default function TentangPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8">
-        <div className="rounded-[2rem] bg-brand-950 p-8 text-brand-100 md:p-12">
-          <span className="text-xs font-semibold uppercase tracking-wide text-marigold-400">
+        <div className="rounded-[2rem] bg-marigold-100 p-8 text-brand-950 md:p-12">
+          <span className="text-xs font-semibold uppercase tracking-wide text-marigold-600">
             Visi
           </span>
-          <p className="mt-4 max-w-3xl font-display text-xl italic leading-relaxed text-surface md:text-2xl">
+          <p className="mt-4 max-w-3xl font-display text-xl italic leading-relaxed text-brand-950 md:text-2xl">
             “Menjadi pusat layanan tumbuh kembang anak secara inklusif yang terintegrasi
             dengan program keberlanjutan anak sesuai dengan potensi perkembangannya, serta
             memberikan pendampingan terbaik kepada keluarga dalam mewujudkan masa depan anak
             secara optimal.”
           </p>
 
-          <span className="mt-10 block text-xs font-semibold uppercase tracking-wide text-marigold-400">
+          <span className="mt-10 block text-xs font-semibold uppercase tracking-wide text-marigold-600">
             Misi
           </span>
           <ol className="mt-4 grid gap-4 md:grid-cols-2">
             {MISI.map((item, i) => (
-              <li key={item} className="flex gap-3 text-[15px] leading-relaxed text-brand-200">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-800 text-xs font-semibold text-surface">
+              <li key={item} className="flex gap-3 text-[15px] leading-relaxed text-ink-soft">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-surface text-xs font-semibold text-brand-800">
                   {i + 1}
                 </span>
                 {item}
@@ -143,19 +143,22 @@ export default function TentangPage() {
               </span>
             ))}
           </div>
-          <div className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
+          <div className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
             {TEAM.map((member) => (
               <div key={member.name} className="flex flex-col items-center gap-3 text-center">
                 <div className="relative aspect-square w-full overflow-hidden rounded-2xl shadow-[0_14px_30px_-15px_rgba(31,78,69,0.3)]">
                   <Image
                     src={member.photo}
-                    alt={member.name}
+                    alt={`${member.name} — ${member.role}`}
                     fill
-                    sizes="(min-width: 768px) 15vw, 30vw"
+                    sizes="(min-width: 1024px) 13vw, (min-width: 768px) 20vw, 30vw"
                     className="object-cover"
                   />
                 </div>
-                <p className="text-sm font-semibold text-brand-900">{member.name}</p>
+                <div>
+                  <p className="text-sm font-semibold text-brand-900">{member.name}</p>
+                  <p className="text-xs text-ink-faint">{member.role}</p>
+                </div>
               </div>
             ))}
           </div>

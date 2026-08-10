@@ -4,7 +4,7 @@ import { BRANCHES } from "@/lib/branches";
 
 export const metadata: Metadata = {
   title: "Kontak — GenSA Kidz",
-  description: "Hubungi GenSA Kidz untuk konsultasi dan pendaftaran terapi tumbuh kembang anak di Lamongan dan Babat.",
+  description: "Hubungi GenSA Kidz untuk konsultasi dan pendaftaran terapi tumbuh kembang anak di Lamongan.",
 };
 
 export default function KontakPage() {
@@ -17,8 +17,8 @@ export default function KontakPage() {
             Kami siap membantu Anda
           </h1>
           <p className="mt-5 text-[17px] leading-relaxed text-ink-soft">
-            Ceritakan kebutuhan anak Anda, tim kami di cabang Lamongan maupun Babat akan
-            membalas secepatnya melalui WhatsApp.
+            Ceritakan kebutuhan anak Anda, tim kami di Lamongan akan membalas secepatnya
+            melalui WhatsApp.
           </p>
           <div className="mt-5 flex gap-3">
             <a

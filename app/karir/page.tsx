@@ -5,12 +5,14 @@ import DotGrid from "@/components/decor/DotGrid";
 import ZigzagAccent from "@/components/decor/ZigzagAccent";
 import karirTeam from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto1.jpg";
 import { JOBS, APPLY_EMAIL } from "@/lib/jobs";
-import { ACTIVITY_PHOTOS } from "@/lib/activityPhotos";
+import { AKTIVITAS_PHOTOS } from "@/lib/gallery";
+
+const ACTIVITY_PHOTOS = AKTIVITAS_PHOTOS.slice(0, 6);
 
 export const metadata: Metadata = {
   title: "Karir — GenSA Kidz",
   description:
-    "Bergabung bersama tim GenSA Kidz — layanan terapi dan stimulasi tumbuh kembang anak di Lamongan & Babat. Lihat posisi yang terbuka dan cara melamar.",
+    "Bergabung bersama tim GenSA Kidz — layanan terapi dan stimulasi tumbuh kembang anak di Lamongan. Lihat posisi yang terbuka dan cara melamar.",
 };
 
 const WHY_JOIN = [
@@ -50,7 +52,7 @@ export default function KarirPage() {
             </h1>
             <p className="mt-5 text-[17px] leading-relaxed text-ink-soft">
               Kami selalu terbuka untuk profesional yang ingin berkontribusi mendampingi
-              anak-anak di Lamongan & Babat mencapai potensi tumbuh kembang terbaiknya.
+              anak-anak di Lamongan mencapai potensi tumbuh kembang terbaiknya.
             </p>
             <div className="mt-6">
               <ConsultationButton
@@ -170,7 +172,7 @@ export default function KarirPage() {
             Kegiatan Sehari-hari di GenSA Kidz
           </h2>
           <p className="mt-3 max-w-xl text-[15px] text-ink-soft">
-            Momen sesi terapi dan stimulasi anak di cabang Lamongan & Babat.
+            Momen sesi terapi dan stimulasi anak di GenSA Kidz Lamongan.
           </p>
           <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3">
             {ACTIVITY_PHOTOS.map((item, i) => (
@@ -179,18 +181,21 @@ export default function KarirPage() {
                 className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl"
               >
                 <Image
-                  src={item.photo}
-                  alt={`Kegiatan di GenSA Kidz ${item.branch}`}
+                  src={item.src}
+                  alt={item.caption}
                   fill
                   sizes="(min-width: 768px) 30vw, 45vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <span className="absolute bottom-3 left-3 rounded-full bg-surface/90 px-3 py-1 text-xs font-semibold text-brand-800">
-                  {item.branch}
-                </span>
               </div>
             ))}
           </div>
+          <a
+            href="/galeri"
+            className="mt-6 inline-block text-sm font-semibold text-brand-800 underline decoration-marigold-500 decoration-2 underline-offset-4"
+          >
+            Lihat Galeri Lengkap →
+          </a>
         </div>
 
         <div className="mt-16 flex flex-col items-start gap-6 rounded-[2rem] bg-brand-950 p-10 text-brand-100 md:flex-row md:items-center md:justify-between md:p-14">

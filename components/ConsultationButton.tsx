@@ -54,7 +54,7 @@ export default function ConsultationButton({
               Konsultasi Tumbuh Kembang
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-              Pilih cabang terdekat untuk terhubung langsung via WhatsApp.
+              Terhubung langsung dengan tim kami via WhatsApp.
             </p>
             <div className="mt-6 flex flex-col gap-3">
               {BRANCHES.map((branch) => (

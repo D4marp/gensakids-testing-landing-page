@@ -186,7 +186,7 @@ export default async function ServiceDetailPage({
               <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 text-xs font-semibold text-brand-800">
                 1
               </span>
-              Hubungi kami via WhatsApp (cabang Lamongan atau Babat) untuk konsultasi awal.
+              Hubungi kami via WhatsApp untuk konsultasi awal.
             </li>
             <li className="flex gap-3 text-[15px] text-ink-soft">
               <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 text-xs font-semibold text-brand-800">
@@ -217,7 +217,7 @@ export default async function ServiceDetailPage({
               Tanya via WhatsApp
             </a>
             <ConsultationButton
-              label="Pilih Cabang Lain"
+              label="Opsi Kontak Lainnya"
               className="whitespace-nowrap rounded-full border border-brand-700 px-6 py-3 text-sm font-semibold text-surface transition-colors hover:bg-brand-900"
             />
           </div>

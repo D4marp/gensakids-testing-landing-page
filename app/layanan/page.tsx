@@ -18,7 +18,7 @@ import { SERVICE_IMAGES } from "@/lib/serviceImages";
 export const metadata: Metadata = {
   title: "Layanan — GenSA Kidz",
   description:
-    "Terapi Wicara, Terapi Okupasi, Fisioterapi, Terapi Perilaku, Ortopedagogik, Psikologi Anak, dan Stimulasi Anak 0–16 Tahun di GenSA Kidz Lamongan & Babat.",
+    "Terapi Wicara, Terapi Okupasi, Fisioterapi, Terapi Perilaku, Ortopedagogik, Psikologi Anak, dan Stimulasi Anak 0–16 Tahun di GenSA Kidz Lamongan.",
 };
 
 const ICONS = {
@@ -49,11 +49,11 @@ export default function LayananPage() {
             Layanan Kami
           </span>
           <h1 className="mt-3 max-w-2xl font-display text-4xl font-semibold text-brand-950 md:text-5xl">
-            8 layanan terpadu & terintegrasi untuk tumbuh kembang optimal si kecil
+            8 Layanan Terpadu dalam 1 Atap untuk tumbuh kembang optimal si kecil
           </h1>
           <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ink-soft">
             Setiap layanan diawali dengan konsultasi dan asesmen agar penanganan yang
-            diberikan benar-benar sesuai kebutuhan anak. Tersedia di cabang Lamongan & Babat.
+            diberikan benar-benar sesuai kebutuhan anak, di lokasi kami Lamongan.
           </p>
         </div>
       </section>
@@ -109,8 +109,8 @@ export default function LayananPage() {
               Fasilitas pendukung layanan GenSA Kidz
             </h2>
             <p className="text-[15px] text-ink-soft">
-              Tersedia di cabang Lamongan maupun Babat untuk mendukung kenyamanan anak dan
-              orang tua selama sesi berlangsung.
+              Tersedia di lokasi kami di Lamongan untuk mendukung kenyamanan anak dan orang
+              tua selama sesi berlangsung.
             </p>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
