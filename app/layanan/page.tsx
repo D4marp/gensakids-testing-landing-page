@@ -38,6 +38,9 @@ const FACILITY_ICONS = {
   puzzle: IconPuzzle,
   book: IconBook,
   heart: IconHeartHead,
+  speech: IconSpeech,
+  run: IconRun,
+  growth: IconGrowth,
 };
 
 export default function LayananPage() {

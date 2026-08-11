@@ -1,51 +1,99 @@
 import type { StaticImageData } from "next/image";
+import musholla from "@/public/images/Ruang Gensakidz/Musholla.jpeg";
+import ruangPedagogic from "@/public/images/Ruang Gensakidz/R, Pedagogic.png";
+import ruangExplorasi from "@/public/images/Ruang Gensakidz/R. Explorasi.png";
+import ruangFisioterapi from "@/public/images/Ruang Gensakidz/R. Fisoterapi.png";
+import ruangTungguAtas from "@/public/images/Ruang Gensakidz/R. Tunggu Atas.png";
+import ruangAdmin from "@/public/images/Ruang Gensakidz/R. admin.png";
+import ruangTerapiWicara from "@/public/images/Ruang Gensakidz/R. terapi wicara.png";
 import ruangAsesmen from "@/public/images/Ruang Gensakidz/Ruang Assessment dan Psikolog Anak.png";
-import ruangTerapi from "@/public/images/Ruang Gensakidz/R. terapi wicara.png";
-import ruangStimulasi from "@/public/images/Ruang Gensakidz/Ruang Sensori Integrasi.png";
-import ruangBelajar from "@/public/images/Ruang Gensakidz/R, Pedagogic.png";
-import ruangTunggu from "@/public/images/Ruang Gensakidz/Ruang tunggu Utama.png";
+import ruangKonsultasi from "@/public/images/Ruang Gensakidz/Ruang Konsultasi.jpeg";
+import ruangSensori from "@/public/images/Ruang Gensakidz/Ruang Sensori Integrasi.png";
+import ruangTungguUtama from "@/public/images/Ruang Gensakidz/Ruang tunggu Utama.png";
 
 export type Facility = {
   title: string;
   description: string;
-  icon: "clipboard" | "hands" | "puzzle" | "book" | "heart";
+  icon: "clipboard" | "hands" | "puzzle" | "book" | "heart" | "speech" | "run" | "growth";
   photo?: StaticImageData;
 };
 
 export const FACILITIES: Facility[] = [
   {
-    title: "Ruang Konsultasi & Asesmen",
+    title: "Ruang Asesmen & Psikolog Anak",
     description:
-      "Ruang khusus untuk sesi konsultasi awal dan asesmen tumbuh kembang, dirancang tenang agar anak dan orang tua merasa nyaman bercerita.",
-    icon: "clipboard",
+      "Ruang evaluasi tumbuh kembang anak dan sesi konseling psikologi bersama psikolog anak profesional yang dirancang tenang.",
+    icon: "growth",
     photo: ruangAsesmen,
   },
   {
-    title: "Ruang Terapi Individual",
+    title: "Ruang Konsultasi",
     description:
-      "Ruang sesi one-on-one untuk terapi wicara, okupasi, fisioterapi, dan terapi perilaku, dengan alat bantu terapi sesuai kebutuhan masing-masing anak.",
-    icon: "hands",
-    photo: ruangTerapi,
+      "Ruang diskusi pribadi untuk orang tua berkonsultasi mengenai hasil asesmen dan rencana terapi si kecil bersama tim.",
+    icon: "clipboard",
+    photo: ruangKonsultasi,
   },
   {
-    title: "Area Stimulasi & Sensorik",
+    title: "Ruang Terapi Wicara",
     description:
-      "Area bermain terarah untuk aktivitas stimulasi motorik dan sensorik anak usia 0–16 tahun, baik perkembangan umum maupun kebutuhan khusus (ABK).",
+      "Ruang khusus yang tenang untuk melatih komunikasi verbal, artikulasi, dan kemampuan bahasa reseptif-ekspresif.",
+    icon: "speech",
+    photo: ruangTerapiWicara,
+  },
+  {
+    title: "Ruang Sensori Integrasi",
+    description:
+      "Dilengkapi dengan ayunan, perosotan, dan jaring sensori untuk melatih koordinasi motorik dan kepekaan indra anak.",
     icon: "puzzle",
-    photo: ruangStimulasi,
+    photo: ruangSensori,
   },
   {
-    title: "Ruang Pendampingan Belajar",
+    title: "Ruang Fisioterapi",
     description:
-      "Ruang untuk sesi ortopedagogik/pendidikan khusus, mendukung anak yang membutuhkan pendampingan belajar di luar kurikulum sekolah umum.",
+      "Ruang terapi fisik anak dengan peralatan latihan kekuatan otot, keseimbangan, serta stimulasi motorik kasar.",
+    icon: "hands",
+    photo: ruangFisioterapi,
+  },
+  {
+    title: "Ruang Ortopedagogik (Terapi Belajar)",
+    description:
+      "Ruang pendampingan belajar khusus secara individual untuk melatih kesiapan sekolah, kognitif, dan akademis anak.",
     icon: "book",
-    photo: ruangBelajar,
+    photo: ruangPedagogic,
   },
   {
-    title: "Ruang Tunggu Orang Tua",
+    title: "Ruang Eksplorasi & Bermain",
     description:
-      "Area tunggu yang nyaman bagi orang tua/pengantar selama sesi terapi anak berlangsung.",
+      "Area eksplorasi motorik kasar dan bermain interaktif untuk menumbuhkan rasa percaya diri dan sosialisasi anak.",
+    icon: "run",
+    photo: ruangExplorasi,
+  },
+  {
+    title: "Ruang Tunggu Utama",
+    description:
+      "Area tunggu yang nyaman dan luas di lantai bawah lengkap dengan sarana informasi layanan dan administrasi.",
     icon: "heart",
-    photo: ruangTunggu,
+    photo: ruangTungguUtama,
+  },
+  {
+    title: "Ruang Tunggu Lantai Atas",
+    description:
+      "Area tunggu lantai dua yang tenang untuk orang tua/pengantar selama mendampingi proses terapi anak.",
+    icon: "heart",
+    photo: ruangTungguAtas,
+  },
+  {
+    title: "Ruang Administrasi & Pendaftaran",
+    description:
+      "Layanan pendaftaran, pengaturan jadwal terapi, administrasi, dan pusat informasi bagi calon orang tua.",
+    icon: "clipboard",
+    photo: ruangAdmin,
+  },
+  {
+    title: "Musholla",
+    description:
+      "Fasilitas musholla yang bersih dan tenang untuk kenyamanan beribadah bagi keluarga pasien maupun staf.",
+    icon: "heart",
+    photo: musholla,
   },
 ];
