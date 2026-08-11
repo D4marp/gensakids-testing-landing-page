@@ -12,8 +12,8 @@ import {
   IconClipboard,
 } from "@/components/icons";
 import { SERVICES } from "@/lib/services";
-import { FACILITIES } from "@/lib/facilities";
 import { SERVICE_IMAGES } from "@/lib/serviceImages";
+import FacilitiesList from "@/components/FacilitiesList";
 
 export const metadata: Metadata = {
   title: "Layanan — GenSA Kidz",
@@ -30,17 +30,6 @@ const ICONS = {
   heart: IconHeartHead,
   growth: IconGrowth,
   clipboard: IconClipboard,
-};
-
-const FACILITY_ICONS = {
-  clipboard: IconClipboard,
-  hands: IconHands,
-  puzzle: IconPuzzle,
-  book: IconBook,
-  heart: IconHeartHead,
-  speech: IconSpeech,
-  run: IconRun,
-  growth: IconGrowth,
 };
 
 export default function LayananPage() {
@@ -116,40 +105,7 @@ export default function LayananPage() {
               tua selama sesi berlangsung.
             </p>
           </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {FACILITIES.map((facility) => {
-              const Icon = FACILITY_ICONS[facility.icon];
-              return (
-                <div
-                  key={facility.title}
-                  className="flex flex-col gap-3 overflow-hidden rounded-3xl border border-line bg-surface"
-                >
-                  {facility.photo && (
-                    <div className="relative aspect-[16/10] w-full">
-                      <Image
-                        src={facility.photo}
-                        alt={facility.title}
-                        fill
-                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                        className={`object-cover ${facility.position || "object-center"}`}
-                      />
-                    </div>
-                  )}
-                  <div className="flex flex-1 flex-col gap-3 p-6">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-marigold-100 text-marigold-600">
-                      <Icon className="h-6 w-6" />
-                    </span>
-                    <h3 className="font-display text-base font-semibold text-brand-900">
-                      {facility.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-ink-soft">
-                      {facility.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <FacilitiesList />
         </div>
       </section>
     </>
