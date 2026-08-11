@@ -22,6 +22,7 @@ import rm8 from "@/public/images/Ruang Gensakidz/Ruang Assessment dan Psikolog A
 import rm9 from "@/public/images/Ruang Gensakidz/Ruang Konsultasi.jpeg";
 import rm10 from "@/public/images/Ruang Gensakidz/Ruang Sensori Integrasi.png";
 import rm11 from "@/public/images/Ruang Gensakidz/Ruang tunggu Utama.png";
+import rm12 from "@/public/images/Ruang Gensakidz/Parkir.png";
 
 export const AKTIVITAS_PHOTOS = [
   { src: ak9, caption: "Terapi Wicara" },
@@ -49,6 +50,7 @@ export const FASILITAS_PHOTOS = [
   { src: rm11, caption: "Ruang Tunggu Utama" },
   { src: rm5, caption: "Ruang Tunggu Lantai Atas" },
   { src: rm6, caption: "Ruang Administrasi / Front Office" },
-  { src: rm1, caption: "Musholla" },
+  { src: rm1, caption: "Musholla", position: "object-bottom" },
+  { src: rm12, caption: "Area Parkir" },
 ];
 

@@ -10,12 +10,14 @@ import ruangAsesmen from "@/public/images/Ruang Gensakidz/Ruang Assessment dan P
 import ruangKonsultasi from "@/public/images/Ruang Gensakidz/Ruang Konsultasi.jpeg";
 import ruangSensori from "@/public/images/Ruang Gensakidz/Ruang Sensori Integrasi.png";
 import ruangTungguUtama from "@/public/images/Ruang Gensakidz/Ruang tunggu Utama.png";
+import parkir from "@/public/images/Ruang Gensakidz/Parkir.png";
 
 export type Facility = {
   title: string;
   description: string;
   icon: "clipboard" | "hands" | "puzzle" | "book" | "heart" | "speech" | "run" | "growth";
   photo?: StaticImageData;
+  position?: string;
 };
 
 export const FACILITIES: Facility[] = [
@@ -95,5 +97,13 @@ export const FACILITIES: Facility[] = [
       "Fasilitas musholla yang bersih dan tenang untuk kenyamanan beribadah bagi keluarga pasien maupun staf.",
     icon: "heart",
     photo: musholla,
+    position: "object-bottom",
+  },
+  {
+    title: "Area Parkir",
+    description:
+      "Area parkir yang luas, aman, dan mudah diakses untuk kenyamanan orang tua dan kendaraan selama kunjungan.",
+    icon: "heart",
+    photo: parkir,
   },
 ];

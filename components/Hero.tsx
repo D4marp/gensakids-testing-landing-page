@@ -71,9 +71,9 @@ export default function Hero() {
               8
             </span>
             <span className="text-sm leading-tight text-ink-soft">
-              Program terapi
+              Layanan Terpadu
               <br />
-              <span className="font-semibold text-brand-900">1 atap</span>
+              <span className="font-semibold text-brand-900">1 Atap</span>
             </span>
           </div>
         </div>
