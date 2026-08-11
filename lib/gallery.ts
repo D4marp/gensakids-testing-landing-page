@@ -11,15 +11,17 @@ import ak10 from "@/public/images/foto terapis/PD 4.jpg";
 import ak11 from "@/public/images/foto terapis/ASS 1.png";
 import ak12 from "@/public/images/foto terapis/ASS 2.png";
 
-import fas1 from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto3.jpg";
-import fas2 from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto4.jpg";
-import fas3 from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto7.jpg";
-import fas4 from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto13.jpg";
-import fas5 from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto16.jpg";
-import fas6 from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto2.png";
-import fas7 from "@/public/images/foto terapis/Sampul.png";
-import fas8 from "@/public/images/foto terapis/Tentang Gensa.png";
-import fas9 from "@/public/images/Ruang Assessment dan Psikolog Anak.png";
+import rm1 from "@/public/images/Ruang Gensakidz/Musholla.jpeg";
+import rm2 from "@/public/images/Ruang Gensakidz/R, Pedagogic.png";
+import rm3 from "@/public/images/Ruang Gensakidz/R. Explorasi.png";
+import rm4 from "@/public/images/Ruang Gensakidz/R. Fisoterapi.png";
+import rm5 from "@/public/images/Ruang Gensakidz/R. Tunggu Atas.png";
+import rm6 from "@/public/images/Ruang Gensakidz/R. admin.png";
+import rm7 from "@/public/images/Ruang Gensakidz/R. terapi wicara.png";
+import rm8 from "@/public/images/Ruang Gensakidz/Ruang Assessment dan Psikolog Anak.png";
+import rm9 from "@/public/images/Ruang Gensakidz/Ruang Konsultasi.jpeg";
+import rm10 from "@/public/images/Ruang Gensakidz/Ruang Sensori Integrasi.png";
+import rm11 from "@/public/images/Ruang Gensakidz/Ruang tunggu Utama.png";
 
 export const AKTIVITAS_PHOTOS = [
   { src: ak9, caption: "Terapi Wicara" },
@@ -37,13 +39,16 @@ export const AKTIVITAS_PHOTOS = [
 ];
 
 export const FASILITAS_PHOTOS = [
-  { src: fas9, caption: "Ruang Asesmen & Psikolog Anak" },
-  { src: fas7, caption: "Ruang Stimulasi Motorik" },
-  { src: fas6, caption: "Ruang Stimulasi Kelompok" },
-  { src: fas1, caption: "Area Panjat & Motorik Kasar" },
-  { src: fas2, caption: "Ruang Fisioterapi" },
-  { src: fas3, caption: "Area Pengukuran Tumbuh Kembang" },
-  { src: fas4, caption: "Ruang Terapi Individual" },
-  { src: fas5, caption: "Area Sensori & Motorik" },
-  { src: fas8, caption: "Ruang Bermain & Sensori" },
+  { src: rm8, caption: "Ruang Asesmen & Psikolog Anak" },
+  { src: rm10, caption: "Ruang Sensori Integrasi" },
+  { src: rm7, caption: "Ruang Terapi Wicara" },
+  { src: rm4, caption: "Ruang Fisioterapi" },
+  { src: rm2, caption: "Ruang Ortopedagogik (Terapi Belajar)" },
+  { src: rm9, caption: "Ruang Konsultasi" },
+  { src: rm3, caption: "Ruang Eksplorasi & Bermain" },
+  { src: rm11, caption: "Ruang Tunggu Utama" },
+  { src: rm5, caption: "Ruang Tunggu Lantai Atas" },
+  { src: rm6, caption: "Ruang Administrasi / Front Office" },
+  { src: rm1, caption: "Musholla" },
 ];
+

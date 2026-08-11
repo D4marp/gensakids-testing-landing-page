@@ -1,8 +1,9 @@
 import type { StaticImageData } from "next/image";
-import ruangAsesmen from "@/public/images/Ruang Assessment dan Psikolog Anak.png";
-import ruangTerapi from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto13.jpg";
-import ruangStimulasi from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto16.jpg";
-import ruangBelajar from "@/public/images/foto terapis/PD 3.jpg";
+import ruangAsesmen from "@/public/images/Ruang Gensakidz/Ruang Assessment dan Psikolog Anak.png";
+import ruangTerapi from "@/public/images/Ruang Gensakidz/R. terapi wicara.png";
+import ruangStimulasi from "@/public/images/Ruang Gensakidz/Ruang Sensori Integrasi.png";
+import ruangBelajar from "@/public/images/Ruang Gensakidz/R, Pedagogic.png";
+import ruangTunggu from "@/public/images/Ruang Gensakidz/Ruang tunggu Utama.png";
 
 export type Facility = {
   title: string;
@@ -45,5 +46,6 @@ export const FACILITIES: Facility[] = [
     description:
       "Area tunggu yang nyaman bagi orang tua/pengantar selama sesi terapi anak berlangsung.",
     icon: "heart",
+    photo: ruangTunggu,
   },
 ];

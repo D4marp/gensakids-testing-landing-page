@@ -43,3 +43,7 @@ public/images/foto terapis/PD*
 !public/images/foto terapis/PD 3.jpg
 !public/images/foto terapis/PD 4.jpg
 !public/images/foto terapis/PD 5.jpg
+
+# Ensure Ruang Gensakidz photos are never ignored
+!public/images/Ruang Gensakidz/
+!public/images/Ruang Gensakidz/*
