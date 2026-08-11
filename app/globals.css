@@ -67,19 +67,6 @@ body {
   }
 }
 
-/* Signature: hand-drawn growth path underline for headline emphasis */
-.path-underline {
-  position: relative;
-  white-space: nowrap;
-}
-.path-underline svg {
-  position: absolute;
-  left: 0;
-  bottom: -0.18em;
-  width: 100%;
-  height: 0.35em;
-}
-
 /* Focus visibility for keyboard nav */
 a:focus-visible,
 button:focus-visible,

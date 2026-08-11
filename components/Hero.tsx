@@ -1,9 +1,8 @@
 import Image from "next/image";
-import Squiggle from "./Squiggle";
 import GrowthPathBackground from "./GrowthPathBackground";
 import DotGrid from "./decor/DotGrid";
 import ZigzagAccent from "./decor/ZigzagAccent";
-import heroChild from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto14.jpg";
+import heroChild from "@/public/images/foto terapis/Sampul.png";
 
 export default function Hero() {
   return (
@@ -16,10 +15,7 @@ export default function Hero() {
           </span>
           <h1 className="max-w-2xl font-display text-4xl font-semibold leading-[1.1] text-brand-950 md:text-6xl">
             Setiap anak punya{" "}
-            <span className="path-underline text-marigold-600">
-              jalur tumbuh
-              <Squiggle />
-            </span>{" "}
+            <span className="text-marigold-600">jalur tumbuh</span>{" "}
             kembangnya sendiri.
           </h1>
           <p className="max-w-xl text-lg leading-relaxed text-ink-soft">

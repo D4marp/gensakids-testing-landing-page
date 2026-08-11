@@ -13,8 +13,8 @@ export const TEAM: TeamMember[] = [
   { name: "Octariana P., M.Psi., Psikolog", role: "Psikolog Anak", photo: octarianan },
   { name: "Risfa, A.Md.TW", role: "Terapis Wicara", photo: risfa },
   { name: "Eka Nur Novitasari, S.Tr.OT", role: "Terapis Okupasi", photo: eka },
-  { name: "Haya, A.Md.OT", role: "Terapis Okupasi", photo: haya },
+  { name: "Haya, S.Tr.OT", role: "Terapis Okupasi", photo: haya },
   { name: "Janu C. Tyas, A.Md.OT", role: "Terapis Okupasi", photo: janu },
-  { name: "Nova, S.Pd.", role: "Guru Ortopedagogik", photo: nova },
+  { name: "Novianan L., S.Pd. PLB.", role: "Guru Ortopedagogik", photo: nova },
   { name: "Dewi L. Fauzia, A.Md.Fis", role: "Fisioterapis", photo: dewi },
 ];
