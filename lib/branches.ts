@@ -23,7 +23,7 @@ export const BRANCHES: Branch[] = [
     mapsQuery: "Ruko+Tambakboyo+Regency+Tikung+Lamongan",
     schedules: [
       { days: "Senin – Jumat", hours: "08:00 – 16:00 WIB" },
-      { days: "Sabtu", hours: "08:00 – 16:00 WIB" },
+      { days: "Sabtu", hours: "08:00 – 15:00 WIB" },
     ],
   },
 ];
