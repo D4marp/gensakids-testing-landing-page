@@ -9,6 +9,7 @@ import { BRANCHES } from "@/lib/branches";
 import DotGrid from "@/components/decor/DotGrid";
 import ZigzagAccent from "@/components/decor/ZigzagAccent";
 import BlockAccent from "@/components/decor/BlockAccent";
+import { IconClock } from "@/components/icons";
 import aboutChild from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto2.png";
 import processChild from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto13.jpg";
 import ctaChildren from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto4.jpg";
@@ -161,7 +162,7 @@ export default function HomePage() {
               Layanan Kami
             </span>
             <h2 className="font-display text-3xl font-semibold text-brand-950 md:text-4xl">
-              Tentukan kebutuhan si kecil, kami sesuaikan penanganannya
+              Solusi tumbuh kembang anak, dengan program terapi individu dan kelompok
             </h2>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -222,7 +223,7 @@ export default function HomePage() {
             Kunjungi Layanan GenSA Kidz di Lamongan
           </h2>
           <p className="text-[15px] text-ink-soft">
-            Jam layanan: Senin – Sabtu, sesuai jadwal janji temu.
+            Jam operasional dan jadwal pelayanan klinik untuk kemudahan konsultasi si kecil.
           </p>
         </div>
         <div className="mt-8 grid gap-8 rounded-[2rem] border border-line bg-surface p-8 md:grid-cols-2 md:items-center">
@@ -230,7 +231,33 @@ export default function HomePage() {
             <h3 className="font-display text-xl font-semibold text-brand-950">
               {BRANCHES[0].name}
             </h3>
-            <dl className="mt-4 space-y-3 text-[15px] text-ink-soft">
+
+            {/* Structured Jadwal Pelayanan Display */}
+            <div className="mt-5 rounded-2xl border border-brand-200/80 bg-brand-50/70 p-5">
+              <div className="flex items-center gap-2 font-semibold text-brand-950 text-sm">
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-marigold-400/30 text-brand-900">
+                  <IconClock className="h-4 w-4 text-marigold-700" />
+                </span>
+                <span className="font-display font-bold">Jadwal Pelayanan</span>
+              </div>
+              <div className="mt-3.5 grid gap-3 sm:grid-cols-2">
+                {BRANCHES[0].schedules.map((sch, i) => (
+                  <div key={i} className="rounded-xl border border-line bg-surface p-3.5 shadow-sm">
+                    <span className="block text-xs font-semibold uppercase tracking-wider text-ink-faint">
+                      {sch.days}
+                    </span>
+                    <span className="mt-1 block font-display text-lg font-bold text-brand-950">
+                      {sch.hours}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-3 text-xs text-ink-soft italic">
+                * Pelayanan dilakukan sesuai jadwal janji temu
+              </p>
+            </div>
+
+            <dl className="mt-6 space-y-3 text-[15px] text-ink-soft">
               <div>
                 <dt className="font-semibold text-ink">Alamat</dt>
                 <dd>{BRANCHES[0].address}</dd>
@@ -252,7 +279,7 @@ export default function HomePage() {
               </div>
             </dl>
           </div>
-          <div className="min-h-[260px] overflow-hidden rounded-2xl border border-line">
+          <div className="min-h-[300px] h-full overflow-hidden rounded-2xl border border-line">
             <iframe
               title={`Lokasi ${BRANCHES[0].name}`}
               src={`https://www.google.com/maps?q=${BRANCHES[0].mapsQuery}&output=embed`}

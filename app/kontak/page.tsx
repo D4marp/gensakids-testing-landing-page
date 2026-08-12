@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import { BRANCHES } from "@/lib/branches";
+import { IconClock } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "Kontak — GenSA Kidz",
@@ -67,7 +68,31 @@ export default function KontakPage() {
                 <h2 className="font-display text-lg font-semibold text-brand-900">
                   {branch.name}
                 </h2>
-                <p className="mt-2 text-[15px] text-ink-soft">{branch.address}</p>
+
+                {branch.schedules && branch.schedules.length > 0 && (
+                  <div className="mt-4 rounded-2xl border border-brand-200/80 bg-brand-50/70 p-4">
+                    <div className="flex items-center gap-2 font-semibold text-brand-950 text-xs">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-marigold-400/30 text-brand-900">
+                        <IconClock className="h-3.5 w-3.5 text-marigold-700" />
+                      </span>
+                      <span className="font-display font-bold">Jadwal Pelayanan</span>
+                    </div>
+                    <div className="mt-2.5 grid gap-2 sm:grid-cols-2">
+                      {branch.schedules.map((sch, i) => (
+                        <div key={i} className="rounded-xl border border-line bg-surface p-3 shadow-sm">
+                          <span className="block text-[11px] font-semibold uppercase tracking-wider text-ink-faint">
+                            {sch.days}
+                          </span>
+                          <span className="mt-0.5 block font-display text-base font-bold text-brand-950">
+                            {sch.hours}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <p className="mt-4 text-[15px] text-ink-soft">{branch.address}</p>
                 <p className="mt-3 text-[15px] text-ink-soft">
                   WA:{" "}
                   <a

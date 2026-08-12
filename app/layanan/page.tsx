@@ -41,7 +41,7 @@ export default function LayananPage() {
             Layanan Kami
           </span>
           <h1 className="mt-3 max-w-2xl font-display text-4xl font-semibold text-brand-950 md:text-5xl">
-            8 Layanan Terpadu dalam 1 Atap untuk tumbuh kembang optimal si kecil
+            Solusi tumbuh kembang anak, dengan program terapi individu dan kelompok
           </h1>
           <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ink-soft">
             Setiap layanan diawali dengan konsultasi dan asesmen agar penanganan yang

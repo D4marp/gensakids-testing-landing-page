@@ -1,3 +1,8 @@
+export type ScheduleItem = {
+  days: string;
+  hours: string;
+};
+
 export type Branch = {
   slug: string;
   name: string;
@@ -5,6 +10,7 @@ export type Branch = {
   whatsapp: string;
   phone?: string;
   mapsQuery: string;
+  schedules: ScheduleItem[];
 };
 
 export const BRANCHES: Branch[] = [
@@ -15,5 +21,9 @@ export const BRANCHES: Branch[] = [
     whatsapp: "6281311992012",
     phone: "0322314966",
     mapsQuery: "Ruko+Tambakboyo+Regency+Tikung+Lamongan",
+    schedules: [
+      { days: "Senin – Jumat", hours: "08:00 – 16:00 WIB" },
+      { days: "Sabtu", hours: "08:00 – 16:00 WIB" },
+    ],
   },
 ];

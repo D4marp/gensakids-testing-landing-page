@@ -1,6 +1,6 @@
 import type { StaticImageData } from "next/image";
 import musholla from "@/public/images/Ruang Gensakidz/Musholla.jpeg";
-import ruangPedagogic from "@/public/images/Ruang Gensakidz/R, Pedagogic.png";
+import ruangPedagogic from "@/public/images/Ruang Gensakidz/R-Pedagogic.png";
 import ruangExplorasi from "@/public/images/Ruang Gensakidz/R. Explorasi.png";
 import ruangFisioterapi from "@/public/images/Ruang Gensakidz/R. Fisoterapi.png";
 import ruangTungguAtas from "@/public/images/Ruang Gensakidz/R. Tunggu Atas.png";

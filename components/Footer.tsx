@@ -110,6 +110,11 @@ export default function Footer() {
                     </a>
                   </li>
                 )}
+                <li className="pt-1 text-xs text-brand-300">
+                  <span className="font-medium text-marigold-400">Jam Layanan:</span>
+                  <br />
+                  Senin – Sabtu: 08:00 – 16:00 WIB
+                </li>
               </ul>
             </div>
           ))}

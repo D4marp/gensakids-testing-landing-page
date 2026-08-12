@@ -12,7 +12,7 @@ import ak11 from "@/public/images/foto terapis/ASS 1.png";
 import ak12 from "@/public/images/foto terapis/ASS 2.png";
 
 import rm1 from "@/public/images/Ruang Gensakidz/Musholla.jpeg";
-import rm2 from "@/public/images/Ruang Gensakidz/R, Pedagogic.png";
+import rm2 from "@/public/images/Ruang Gensakidz/R-Pedagogic.png";
 import rm3 from "@/public/images/Ruang Gensakidz/R. Explorasi.png";
 import rm4 from "@/public/images/Ruang Gensakidz/R. Fisoterapi.png";
 import rm5 from "@/public/images/Ruang Gensakidz/R. Tunggu Atas.png";

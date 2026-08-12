@@ -75,3 +75,23 @@ export function IconClipboard({ className = base }: IconProps) {
     </svg>
   );
 }
+
+export function IconClock({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className={className}>
+      <circle cx="12" cy="12" r="9" />
+      <polyline points="12 7 12 12 15 13" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function IconCalendar({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className={className}>
+      <rect x="3" y="4" width="18" height="17" rx="2" strokeLinejoin="round" />
+      <line x1="16" y1="2" x2="16" y2="6" strokeLinecap="round" />
+      <line x1="8" y1="2" x2="8" y2="6" strokeLinecap="round" />
+      <line x1="3" y1="10" x2="21" y2="10" strokeLinecap="round" />
+    </svg>
+  );
+}
