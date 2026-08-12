@@ -26,7 +26,7 @@ export const ARTICLES: Article[] = [
       "Di usia 12 bulan, anak umumnya sudah mulai mengoceh dengan pola suara yang bervariasi. Di usia 18 bulan, sebagian besar anak sudah mengucapkan beberapa kata sederhana seperti “mama” atau “papa”. Jika di usia 2 tahun anak belum mengucapkan kombinasi dua kata, ini bisa menjadi salah satu tanda yang perlu diperhatikan.",
       "Tanda lain yang perlu diwaspadai antara lain: anak tampak kesulitan memahami instruksi sederhana, jarang melakukan kontak mata saat diajak bicara, atau lebih banyak menunjuk dan merengek dibanding mencoba mengucapkan kata.",
       "Deteksi dini sangat penting karena semakin cepat ditangani, semakin besar peluang anak mengejar ketertinggalan perkembangan bahasanya. Terapi wicara yang dilakukan sejak dini terbukti membantu anak berkomunikasi lebih efektif seiring bertambahnya usia.",
-      "Jika Anda mengamati salah satu tanda di atas pada si kecil, jangan ragu untuk berkonsultasi dengan evaluator perkembangan anak agar mendapatkan gambaran yang lebih jelas dan penanganan yang tepat.",
+      "Jika Anda mengamati salah satu tanda di atas pada si kecil, jangan ragu untuk berkonsultasi dengan psikolog anak agar mendapatkan gambaran yang lebih jelas dan penanganan yang tepat.",
     ],
   },
   {

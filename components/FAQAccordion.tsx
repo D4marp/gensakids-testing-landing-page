@@ -5,7 +5,7 @@ import { useState } from "react";
 const FAQS = [
   {
     q: "Bagaimana tahapan pendaftaran konsultasi di GenSA Kidz?",
-    a: "Anda dapat menghubungi kami via WhatsApp atau telepon untuk menjadwalkan konsultasi awal. Tim evaluator perkembangan kami akan melakukan asesmen sebelum menyusun rencana terapi yang sesuai.",
+    a: "Anda dapat menghubungi kami via WhatsApp atau telepon untuk menjadwalkan konsultasi awal. Tim Psikolog Anak kami akan melakukan asesmen sebelum menyusun rencana terapi yang sesuai.",
   },
   {
     q: "Anak saya sudah punya diagnosis dari dokter, apakah bisa langsung terapi?",
@@ -21,7 +21,7 @@ const FAQS = [
   },
   {
     q: "Berapa lama durasi satu sesi terapi?",
-    a: "Durasi dan frekuensi sesi bervariasi tergantung jenis terapi dan rencana yang disusun bersama tim evaluator. Silakan konsultasikan langsung via WhatsApp untuk info lebih detail.",
+    a: "Durasi dan frekuensi sesi bervariasi tergantung jenis terapi dan rencana yang disusun bersama Psikolog Anak dan terapis. Silakan konsultasikan langsung via WhatsApp untuk info lebih detail.",
   },
 ];
 

@@ -22,7 +22,7 @@ const WHY_JOIN = [
   },
   {
     title: "Tim lintas disiplin",
-    desc: "Berkolaborasi dengan evaluator perkembangan, terapis, dan psikolog dalam satu tim yang suportif.",
+    desc: "Berkolaborasi dengan psikolog anak dan para terapis dalam satu tim yang suportif.",
   },
   {
     title: "Pengembangan berkelanjutan",

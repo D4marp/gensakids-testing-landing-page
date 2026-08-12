@@ -10,6 +10,7 @@ export type Branch = {
   whatsapp: string;
   phone?: string;
   mapsQuery: string;
+  mapsUrl: string;
   schedules: ScheduleItem[];
 };
 
@@ -20,7 +21,9 @@ export const BRANCHES: Branch[] = [
     address: "Ruko Tambakboyo Regency No. 01–02, Tikung, Lamongan, Jawa Timur 62281",
     whatsapp: "6281311992012",
     phone: "0322314966",
-    mapsQuery: "Ruko+Tambakboyo+Regency+Tikung+Lamongan",
+    mapsQuery: "GenSA+Kidz+Terapi+Tumbuh+Kembang+Anak+Lamongan",
+    mapsUrl:
+      "https://www.google.com/maps/place/GenSA+Kidz+Terapi+Tumbuh+Kembang+Anak+Lamongan/@-7.1305286,112.4225374,17z",
     schedules: [
       { days: "Senin – Jumat", hours: "08:00 – 16:00 WIB" },
       { days: "Sabtu", hours: "08:00 – 15:00 WIB" },

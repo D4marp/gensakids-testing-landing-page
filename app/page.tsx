@@ -128,7 +128,7 @@ export default function HomePage() {
               {[
                 {
                   title: "Tim lintas disiplin",
-                  desc: "Evaluator perkembangan, terapis, hingga psikolog anak berkolaborasi untuk setiap kasus.",
+                  desc: "Psikolog anak dan para terapis berkolaborasi untuk setiap kasus.",
                 },
                 {
                   title: "Program dipersonalisasi",
@@ -233,20 +233,22 @@ export default function HomePage() {
             </h3>
 
             {/* Structured Jadwal Pelayanan Display */}
-            <div className="mt-5 rounded-2xl border border-brand-200/80 bg-brand-50/70 p-5">
-              <div className="flex items-center gap-2 font-semibold text-brand-950 text-sm">
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-marigold-400/30 text-brand-900">
-                  <IconClock className="h-4 w-4 text-marigold-700" />
+            <div className="mt-5 rounded-2xl border border-brand-200/80 bg-brand-50/70 p-5 shadow-sm">
+              <div className="flex items-center gap-2.5 text-brand-950">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-marigold-400/30 text-brand-900 shadow-sm">
+                  <IconClock className="h-5 w-5 text-marigold-700" />
                 </span>
-                <span className="font-display font-bold">Jadwal Pelayanan</span>
+                <span className="font-display text-lg md:text-xl font-bold tracking-tight text-brand-950">
+                  Jadwal Pelayanan
+                </span>
               </div>
-              <div className="mt-3.5 grid gap-3 sm:grid-cols-2">
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {BRANCHES[0].schedules.map((sch, i) => (
-                  <div key={i} className="rounded-xl border border-line bg-surface p-3.5 shadow-sm">
-                    <span className="block text-xs font-semibold uppercase tracking-wider text-ink-faint">
+                  <div key={i} className="rounded-xl border border-line bg-surface p-4 shadow-sm">
+                    <span className="block text-xs font-bold uppercase tracking-wider text-marigold-700">
                       {sch.days}
                     </span>
-                    <span className="mt-1 block font-display text-lg font-bold text-brand-950">
+                    <span className="mt-1 block font-display text-xl font-extrabold text-brand-950">
                       {sch.hours}
                     </span>
                   </div>
@@ -279,14 +281,24 @@ export default function HomePage() {
               </div>
             </dl>
           </div>
-          <div className="min-h-[300px] h-full overflow-hidden rounded-2xl border border-line">
-            <iframe
-              title={`Lokasi ${BRANCHES[0].name}`}
-              src={`https://www.google.com/maps?q=${BRANCHES[0].mapsQuery}&output=embed`}
-              className="h-full w-full"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          <div className="flex flex-col gap-3 h-full min-h-[320px]">
+            <div className="flex-1 overflow-hidden rounded-2xl border border-line min-h-[260px]">
+              <iframe
+                title={`Lokasi ${BRANCHES[0].name}`}
+                src={`https://www.google.com/maps?q=${BRANCHES[0].mapsQuery}&output=embed`}
+                className="h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <a
+              href={BRANCHES[0].mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-brand-200 bg-surface px-4 py-2.5 text-sm font-semibold text-brand-900 shadow-sm transition-colors hover:bg-brand-50 hover:text-brand-950"
+            >
+              📍 Buka di Google Maps
+            </a>
           </div>
         </div>
       </section>

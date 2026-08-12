@@ -7,7 +7,7 @@ const STEPS = [
   {
     n: "02",
     title: "Asesmen & Evaluasi",
-    desc: "Evaluator perkembangan melakukan asesmen menyeluruh untuk memahami kondisi dan kebutuhan anak.",
+    desc: "Psikolog Anak melakukan asesmen menyeluruh untuk memahami kondisi dan kebutuhan anak.",
   },
   {
     n: "03",

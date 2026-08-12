@@ -10,7 +10,7 @@ import { TEAM } from "@/lib/team";
 export const metadata: Metadata = {
   title: "Tentang Kami — GenSA Kidz",
   description:
-    "GenSA Kidz adalah pusat layanan terapi tumbuh kembang anak di Lamongan sejak 2020, didampingi tim evaluator perkembangan dan terapis berpengalaman.",
+    "GenSA Kidz adalah pusat layanan terapi tumbuh kembang anak di Lamongan sejak 2020, didampingi tim psikolog anak dan terapis berpengalaman.",
 };
 
 const MISI = [

@@ -70,20 +70,22 @@ export default function KontakPage() {
                 </h2>
 
                 {branch.schedules && branch.schedules.length > 0 && (
-                  <div className="mt-4 rounded-2xl border border-brand-200/80 bg-brand-50/70 p-4">
-                    <div className="flex items-center gap-2 font-semibold text-brand-950 text-xs">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-marigold-400/30 text-brand-900">
-                        <IconClock className="h-3.5 w-3.5 text-marigold-700" />
+                  <div className="mt-4 rounded-2xl border border-brand-200/80 bg-brand-50/70 p-5 shadow-sm">
+                    <div className="flex items-center gap-2.5 text-brand-950">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-marigold-400/30 text-brand-900 shadow-sm">
+                        <IconClock className="h-5 w-5 text-marigold-700" />
                       </span>
-                      <span className="font-display font-bold">Jadwal Pelayanan</span>
+                      <span className="font-display text-lg md:text-xl font-bold tracking-tight text-brand-950">
+                        Jadwal Pelayanan
+                      </span>
                     </div>
-                    <div className="mt-2.5 grid gap-2 sm:grid-cols-2">
+                    <div className="mt-4 grid gap-3 sm:grid-cols-2">
                       {branch.schedules.map((sch, i) => (
-                        <div key={i} className="rounded-xl border border-line bg-surface p-3 shadow-sm">
-                          <span className="block text-[11px] font-semibold uppercase tracking-wider text-ink-faint">
+                        <div key={i} className="rounded-xl border border-line bg-surface p-4 shadow-sm">
+                          <span className="block text-xs font-bold uppercase tracking-wider text-marigold-700">
                             {sch.days}
                           </span>
-                          <span className="mt-0.5 block font-display text-base font-bold text-brand-950">
+                          <span className="mt-1 block font-display text-xl font-extrabold text-brand-950">
                             {sch.hours}
                           </span>
                         </div>
@@ -113,14 +115,24 @@ export default function KontakPage() {
                     </>
                   )}
                 </p>
-                <div className="mt-4 min-h-[200px] overflow-hidden rounded-2xl border border-line">
-                  <iframe
-                    title={`Lokasi ${branch.name}`}
-                    src={`https://www.google.com/maps?q=${branch.mapsQuery}&output=embed`}
-                    className="h-full w-full"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
+                <div className="mt-4 flex flex-col gap-3">
+                  <div className="min-h-[220px] overflow-hidden rounded-2xl border border-line">
+                    <iframe
+                      title={`Lokasi ${branch.name}`}
+                      src={`https://www.google.com/maps?q=${branch.mapsQuery}&output=embed`}
+                      className="h-full w-full min-h-[220px] border-0"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </div>
+                  <a
+                    href={branch.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-brand-200 bg-surface px-4 py-2.5 text-sm font-semibold text-brand-900 shadow-sm transition-colors hover:bg-brand-50 hover:text-brand-950"
+                  >
+                    📍 Buka di Google Maps
+                  </a>
                 </div>
               </div>
             ))}

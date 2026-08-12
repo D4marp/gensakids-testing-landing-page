@@ -27,9 +27,9 @@ export const SERVICES: Service[] = [
     title: "Konsultasi & Asesmen Tumbuh Kembang",
     icon: "clipboard",
     short:
-      "Langkah awal setiap anak — evaluator perkembangan memetakan kondisi anak sebelum menyusun program terapi.",
+      "Langkah awal setiap anak — Psikolog Anak memetakan kondisi anak sebelum menyusun program terapi.",
     detail: [
-      "Konsultasi awal bersama evaluator perkembangan anak.",
+      "Konsultasi awal bersama Psikolog Anak.",
       "Asesmen menyeluruh untuk memetakan kemampuan dan hambatan anak.",
       "Penyusunan rencana terapi yang disesuaikan dengan kebutuhan anak.",
     ],
@@ -44,11 +44,11 @@ export const SERVICES: Service[] = [
       "Memetakan kondisi dan kebutuhan anak secara objektif, sehingga program terapi yang disusun benar-benar sesuai — bukan pendekatan satu ukuran untuk semua anak.",
     process: [
       "Wawancara awal bersama orang tua mengenai riwayat dan kekhawatiran terhadap anak.",
-      "Observasi dan asesmen langsung terhadap kemampuan anak oleh evaluator perkembangan.",
+      "Observasi dan asesmen langsung terhadap kemampuan anak oleh Psikolog Anak.",
       "Diskusi hasil asesmen dan rekomendasi program bersama orang tua.",
     ],
     duration: "60 menit per sesi (intervensi maupun edukasi orang tua).",
-    professionals: "Evaluator Perkembangan Anak.",
+    professionals: "Psikolog Anak.",
     whatToBring: WHAT_TO_BRING_DEFAULT,
     extraFaq: [
       {
@@ -262,7 +262,7 @@ export const SERVICES: Service[] = [
       "Pencatatan perkembangan dan rekomendasi stimulasi lanjutan di rumah.",
     ],
     duration: "60 menit per sesi (intervensi maupun edukasi orang tua).",
-    professionals: "Terapis/Instruktur Stimulasi Anak, didampingi Evaluator Perkembangan Anak.",
+    professionals: "Terapis/Instruktur Stimulasi Anak, didampingi Psikolog Anak.",
     whatToBring: WHAT_TO_BRING_DEFAULT,
   },
 ];
