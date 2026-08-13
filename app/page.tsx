@@ -4,27 +4,37 @@ import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import ProcessSteps from "@/components/ProcessSteps";
 import Testimonials from "@/components/Testimonials";
-import { SERVICES } from "@/lib/services";
-import { BRANCHES } from "@/lib/branches";
 import DotGrid from "@/components/decor/DotGrid";
 import ZigzagAccent from "@/components/decor/ZigzagAccent";
 import BlockAccent from "@/components/decor/BlockAccent";
 import { IconClock } from "@/components/icons";
+import { getServices, getBranches, getSettings } from "@/lib/api";
 import aboutChild from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto2.png";
 import processChild from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto13.jpg";
 import ctaChildren from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto4.jpg";
 
-const BADGES = [
-  { label: "Berdiri sejak", value: "2020" },
-  { label: "Rentang usia", value: "0–16 Tahun" },
-  { label: "Jenis layanan", value: "8 Layanan Terpadu dalam 1 Atap" },
-  { label: "Pendekatan", value: "One-Stop Solution" },
-];
+export default async function HomePage() {
+  const [services, branches, settings] = await Promise.all([
+    getServices(),
+    getBranches(),
+    getSettings(),
+  ]);
+  const branch = branches[0];
 
-export default function HomePage() {
+  const badges = [
+    { label: "Berdiri sejak", value: "2020" },
+    { label: "Rentang usia", value: "0–16 Tahun" },
+    { label: "Jenis layanan", value: "8 Layanan Terpadu dalam 1 Atap" },
+    { label: "Pendekatan", value: "One-Stop Solution" },
+  ];
+
   return (
     <>
-      <Hero />
+      <Hero
+        badge={settings.hero_badge}
+        title={settings.hero_title}
+        subtitle={settings.hero_subtitle}
+      />
 
       {/* Tentang Singkat */}
       <section className="mx-auto max-w-6xl px-5 py-20 md:px-8">
@@ -37,11 +47,7 @@ export default function HomePage() {
               One-stop solution untuk tumbuh kembang anak
             </h2>
             <p className="mt-5 text-[17px] leading-relaxed text-ink-soft">
-              GenSA Kidz adalah pusat layanan terapi dan stimulasi tumbuh kembang anak di
-              Lamongan, Jawa Timur. Sejak 2020, kami mendampingi anak dengan perkembangan
-              umum maupun anak berkebutuhan khusus (ABK) melalui deteksi dini, stimulasi,
-              dan penanganan klinis yang terpadu — mulai dari konsultasi awal hingga sesi
-              terapi rutin, semua dalam satu tempat.
+              {settings.about_text}
             </p>
             <Link
               href="/tentang"
@@ -50,7 +56,7 @@ export default function HomePage() {
               Selengkapnya tentang kami
             </Link>
             <dl className="mt-8 grid grid-cols-2 gap-4">
-              {BADGES.map((b) => (
+              {badges.map((b) => (
                 <div key={b.label} className="rounded-2xl border border-line bg-surface p-5">
                   <dt className="text-xs font-medium uppercase tracking-wide text-ink-faint">
                     {b.label}
@@ -166,8 +172,16 @@ export default function HomePage() {
             </h2>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {SERVICES.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+            {services.map((service) => (
+              <ServiceCard
+                key={service.Slug}
+                service={{
+                  slug: service.Slug,
+                  title: service.Title,
+                  icon: service.Icon,
+                  short: service.Short,
+                }}
+              />
             ))}
           </div>
           <div className="mt-10">
@@ -214,94 +228,97 @@ export default function HomePage() {
       </section>
 
       {/* Jadwal & Lokasi */}
-      <section id="jadwal" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-20 md:px-8">
-        <div className="flex flex-col gap-3 md:max-w-xl">
-          <span className="text-xs font-semibold uppercase tracking-wide text-marigold-600">
-            Jadwal & Lokasi
-          </span>
-          <h2 className="font-display text-3xl font-semibold text-brand-950 md:text-4xl">
-            Kunjungi Layanan GenSA Kidz di Lamongan
-          </h2>
-          <p className="text-[15px] text-ink-soft">
-            Jam operasional dan jadwal pelayanan klinik untuk kemudahan konsultasi si kecil.
-          </p>
-        </div>
-        <div className="mt-8 grid gap-8 rounded-[2rem] border border-line bg-surface p-8 md:grid-cols-2 md:items-center">
-          <div>
-            <h3 className="font-display text-xl font-semibold text-brand-950">
-              {BRANCHES[0].name}
-            </h3>
+      {branch && (
+        <section id="jadwal" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-20 md:px-8">
+          <div className="flex flex-col gap-3 md:max-w-xl">
+            <span className="text-xs font-semibold uppercase tracking-wide text-marigold-600">
+              Jadwal & Lokasi
+            </span>
+            <h2 className="font-display text-3xl font-semibold text-brand-950 md:text-4xl">
+              Kunjungi Layanan GenSA Kidz di Lamongan
+            </h2>
+            <p className="text-[15px] text-ink-soft">
+              Jam operasional dan jadwal pelayanan klinik untuk kemudahan konsultasi si kecil.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-8 rounded-[2rem] border border-line bg-surface p-8 md:grid-cols-2 md:items-center">
+            <div>
+              <h3 className="font-display text-xl font-semibold text-brand-950">
+                {branch.Name}
+              </h3>
 
-            {/* Structured Jadwal Pelayanan Display */}
-            <div className="mt-5 rounded-2xl border border-brand-200/80 bg-brand-50/70 p-5 shadow-sm">
-              <div className="flex items-center gap-2.5 text-brand-950">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-marigold-400/30 text-brand-900 shadow-sm">
-                  <IconClock className="h-5 w-5 text-marigold-700" />
-                </span>
-                <span className="font-display text-lg md:text-xl font-bold tracking-tight text-brand-950">
-                  Jadwal Pelayanan
-                </span>
-              </div>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                {BRANCHES[0].schedules.map((sch, i) => (
-                  <div key={i} className="rounded-xl border border-line bg-surface p-4 shadow-sm">
-                    <span className="block text-xs font-bold uppercase tracking-wider text-marigold-700">
-                      {sch.days}
+              {branch.Schedules && branch.Schedules.length > 0 && (
+                <div className="mt-5 rounded-2xl border border-brand-200/80 bg-brand-50/70 p-5 shadow-sm">
+                  <div className="flex items-center gap-2.5 text-brand-950">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-marigold-400/30 text-brand-900 shadow-sm">
+                      <IconClock className="h-5 w-5 text-marigold-700" />
                     </span>
-                    <span className="mt-1 block font-display text-xl font-extrabold text-brand-950">
-                      {sch.hours}
+                    <span className="font-display text-lg md:text-xl font-bold tracking-tight text-brand-950">
+                      Jadwal Pelayanan
                     </span>
                   </div>
-                ))}
-              </div>
-              <p className="mt-3 text-xs text-ink-soft italic">
-                * Pelayanan dilakukan sesuai jadwal janji temu
-              </p>
-            </div>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                    {branch.Schedules.map((sch, i) => (
+                      <div key={i} className="rounded-xl border border-line bg-surface p-4 shadow-sm">
+                        <span className="block text-xs font-bold uppercase tracking-wider text-marigold-700">
+                          {sch.days}
+                        </span>
+                        <span className="mt-1 block font-display text-xl font-extrabold text-brand-950">
+                          {sch.hours}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-3 text-xs text-ink-soft italic">
+                    * Pelayanan dilakukan sesuai jadwal janji temu
+                  </p>
+                </div>
+              )}
 
-            <dl className="mt-6 space-y-3 text-[15px] text-ink-soft">
-              <div>
-                <dt className="font-semibold text-ink">Alamat</dt>
-                <dd>{BRANCHES[0].address}</dd>
-              </div>
-              <div>
-                <dt className="font-semibold text-ink">Kontak</dt>
-                <dd>
-                  WA{" "}
-                  <a
-                    href={`https://wa.me/${BRANCHES[0].whatsapp}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-brand-800 underline"
-                  >
-                    +{BRANCHES[0].whatsapp}
-                  </a>
-                  {BRANCHES[0].phone && <> atau (0322) 314966</>}
-                </dd>
-              </div>
-            </dl>
-          </div>
-          <div className="flex flex-col gap-3 h-full min-h-[320px]">
-            <div className="flex-1 overflow-hidden rounded-2xl border border-line min-h-[260px]">
-              <iframe
-                title={`Lokasi ${BRANCHES[0].name}`}
-                src={`https://www.google.com/maps?q=${BRANCHES[0].mapsQuery}&output=embed`}
-                className="h-full w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+              <dl className="mt-6 space-y-3 text-[15px] text-ink-soft">
+                <div>
+                  <dt className="font-semibold text-ink">Alamat</dt>
+                  <dd>{branch.Address}</dd>
+                </div>
+                <div>
+                  <dt className="font-semibold text-ink">Kontak</dt>
+                  <dd>
+                    WA{" "}
+                    <a
+                      href={`https://wa.me/${branch.WhatsApp}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-brand-800 underline"
+                    >
+                      +{branch.WhatsApp}
+                    </a>
+                    {branch.Phone && <> atau {branch.Phone}</>}
+                  </dd>
+                </div>
+              </dl>
             </div>
-            <a
-              href={BRANCHES[0].mapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-brand-200 bg-surface px-4 py-2.5 text-sm font-semibold text-brand-900 shadow-sm transition-colors hover:bg-brand-50 hover:text-brand-950"
-            >
-              📍 Buka di Google Maps
-            </a>
+            <div className="flex h-full min-h-[320px] flex-col gap-3">
+              <div className="min-h-[260px] flex-1 overflow-hidden rounded-2xl border border-line">
+                <iframe
+                  title={`Lokasi ${branch.Name}`}
+                  src={`https://www.google.com/maps?q=${branch.MapsQuery}&output=embed`}
+                  className="h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+              <a
+                href={branch.MapsURL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-brand-200 bg-surface px-4 py-2.5 text-sm font-semibold text-brand-900 shadow-sm transition-colors hover:bg-brand-50 hover:text-brand-950"
+              >
+                📍 Buka di Google Maps
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA Akhir */}
       <section className="mx-auto max-w-6xl px-5 pb-24 md:px-8">
@@ -324,7 +341,7 @@ export default function HomePage() {
             </p>
           </div>
           <a
-            href="https://wa.me/6281311992012?text=Halo%20GenSA%20Kidz%2C%20saya%20ingin%20konsultasi%20tumbuh%20kembang%20anak."
+            href={`https://wa.me/${branch?.WhatsApp || "6281311992012"}?text=Halo%20GenSA%20Kidz%2C%20saya%20ingin%20konsultasi%20tumbuh%20kembang%20anak.`}
             target="_blank"
             rel="noopener noreferrer"
             className="whitespace-nowrap rounded-full bg-marigold-500 px-7 py-3.5 text-[15px] font-semibold text-brand-950 shadow-lg transition-transform hover:scale-[1.02] hover:bg-marigold-600"

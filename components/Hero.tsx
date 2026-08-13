@@ -4,25 +4,27 @@ import DotGrid from "./decor/DotGrid";
 import ZigzagAccent from "./decor/ZigzagAccent";
 import heroChild from "@/public/images/foto terapis/Sampul.png";
 
-export default function Hero() {
+export default function Hero({
+  badge = "Lamongan · Sejak 2020",
+  title = "Setiap anak punya jalur tumbuh kembangnya sendiri.",
+  subtitle = "GenSA Kidz mendampingi anak usia 0–16 tahun — baik dengan perkembangan umum maupun kebutuhan khusus (ABK) — lewat asesmen menyeluruh dan program terapi yang dipersonalisasi, satu atap di Lamongan.",
+}: {
+  badge?: string;
+  title?: string;
+  subtitle?: string;
+}) {
   return (
     <section className="relative overflow-hidden bg-brand-100">
       <GrowthPathBackground />
       <div className="relative mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-[1.05fr_0.95fr] md:items-center md:px-8 md:py-24">
         <div className="flex flex-col gap-6">
           <span className="inline-flex w-fit items-center gap-2 rounded-full bg-surface px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-800 shadow-sm">
-            Lamongan · Sejak 2020
+            {badge}
           </span>
           <h1 className="max-w-2xl font-display text-4xl font-semibold leading-[1.1] text-brand-950 md:text-6xl">
-            Setiap anak punya{" "}
-            <span className="text-marigold-600">jalur tumbuh</span>{" "}
-            kembangnya sendiri.
+            {title}
           </h1>
-          <p className="max-w-xl text-lg leading-relaxed text-ink-soft">
-            GenSA Kidz mendampingi anak usia 0–16 tahun — baik dengan perkembangan umum
-            maupun kebutuhan khusus (ABK) — lewat asesmen menyeluruh dan program terapi
-            yang dipersonalisasi, satu atap di Lamongan.
-          </p>
+          <p className="max-w-xl text-lg leading-relaxed text-ink-soft">{subtitle}</p>
           <div className="flex flex-wrap gap-4 pt-2">
             <a
               href="https://wa.me/6281311992012?text=Halo%20GenSA%20Kidz%2C%20saya%20ingin%20konsultasi%20tumbuh%20kembang%20anak."

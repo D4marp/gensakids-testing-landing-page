@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import {
   IconSpeech,
   IconHands,
@@ -12,7 +12,6 @@ import {
   IconGrowth,
   IconClipboard,
 } from "@/components/icons";
-import { FACILITIES, type Facility } from "@/lib/facilities";
 
 const FACILITY_ICONS = {
   clipboard: IconClipboard,
@@ -25,16 +24,22 @@ const FACILITY_ICONS = {
   growth: IconGrowth,
 };
 
-export default function FacilitiesList() {
-  const [selectedFacility, setSelectedFacility] = useState<Facility | null>(null);
+export type FacilityItem = {
+  title: string;
+  description: string;
+  icon: keyof typeof FACILITY_ICONS;
+  image: string | StaticImageData | null;
+  position?: string;
+};
+
+export default function FacilitiesList({ facilities }: { facilities: FacilityItem[] }) {
+  const [selected, setSelected] = useState<FacilityItem | null>(null);
 
   useEffect(() => {
-    if (selectedFacility) {
+    if (selected) {
       document.body.style.overflow = "hidden";
       const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Escape") {
-          setSelectedFacility(null);
-        }
+        if (e.key === "Escape") setSelected(null);
       };
       window.addEventListener("keydown", handleKeyDown);
       return () => {
@@ -42,25 +47,25 @@ export default function FacilitiesList() {
         window.removeEventListener("keydown", handleKeyDown);
       };
     }
-  }, [selectedFacility]);
+  }, [selected]);
 
   return (
     <>
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {FACILITIES.map((facility) => {
-          const Icon = FACILITY_ICONS[facility.icon];
+        {facilities.map((facility) => {
+          const Icon = FACILITY_ICONS[facility.icon] || IconHeartHead;
           return (
             <div
               key={facility.title}
               className="flex flex-col gap-3 overflow-hidden rounded-3xl border border-line bg-surface"
             >
-              {facility.photo && (
+              {facility.image && (
                 <div
-                  onClick={() => setSelectedFacility(facility)}
+                  onClick={() => setSelected(facility)}
                   className="relative aspect-[16/10] w-full cursor-pointer overflow-hidden transition-opacity hover:opacity-95"
                 >
                   <Image
-                    src={facility.photo}
+                    src={facility.image}
                     alt={facility.title}
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
@@ -80,9 +85,7 @@ export default function FacilitiesList() {
                 <h3 className="font-display text-base font-semibold text-brand-900">
                   {facility.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-ink-soft">
-                  {facility.description}
-                </p>
+                <p className="text-sm leading-relaxed text-ink-soft">{facility.description}</p>
               </div>
             </div>
           );
@@ -90,40 +93,38 @@ export default function FacilitiesList() {
       </div>
 
       {/* Lightbox Pop-up Modal */}
-      {selectedFacility && selectedFacility.photo && (
+      {selected && selected.image && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 sm:p-6 backdrop-blur-sm animate-fade-in"
-          onClick={() => setSelectedFacility(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-6"
+          onClick={() => setSelected(null)}
         >
           <div
-            className="relative flex max-h-[90vh] max-w-[95vw] sm:max-w-5xl flex-col overflow-hidden rounded-2xl bg-brand-950 shadow-2xl border border-brand-900 animate-scale-up"
+            className="relative flex max-h-[90vh] w-full max-w-[95vw] flex-col overflow-hidden rounded-2xl border border-brand-900 bg-brand-950 shadow-2xl sm:max-w-5xl"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
-              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors duration-200"
-              onClick={() => setSelectedFacility(null)}
+              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white transition-colors duration-200 hover:bg-black/80"
+              onClick={() => setSelected(null)}
               aria-label="Tutup"
             >
               ✕
             </button>
-            <div className="relative max-h-[75vh] overflow-hidden flex items-center justify-center bg-black/20">
+            <div className="relative h-[70vh] w-full bg-black/20">
               <Image
-                src={selectedFacility.photo}
-                alt={selectedFacility.title}
-                width={selectedFacility.photo.width}
-                height={selectedFacility.photo.height}
-                placeholder="blur"
-                className="h-auto max-h-[75vh] w-auto max-w-full object-contain"
+                src={selected.image}
+                alt={selected.title}
+                fill
                 sizes="(max-width: 1024px) 95vw, 1024px"
+                className="object-contain"
                 priority
               />
             </div>
-            <div className="bg-brand-950 p-4 text-center border-t border-brand-900/40">
-              <h4 className="text-sm font-semibold text-surface">{selectedFacility.title}</h4>
-              {selectedFacility.description && (
-                <p className="mt-1 text-xs text-brand-300 max-w-xl mx-auto leading-relaxed">
-                  {selectedFacility.description}
+            <div className="border-t border-brand-900/40 bg-brand-950 p-4 text-center">
+              <h4 className="text-sm font-semibold text-surface">{selected.title}</h4>
+              {selected.description && (
+                <p className="mx-auto mt-1 max-w-xl text-xs leading-relaxed text-brand-300">
+                  {selected.description}
                 </p>
               )}
             </div>

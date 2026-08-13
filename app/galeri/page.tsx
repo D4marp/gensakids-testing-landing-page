@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import GalleryTabs from "@/components/GalleryTabs";
-import { AKTIVITAS_PHOTOS, FASILITAS_PHOTOS } from "@/lib/gallery";
+import { getGallery, backendImage } from "@/lib/api";
+import { fallbackGalleryImage } from "@/lib/imageFallbacks";
 
 export const metadata: Metadata = {
   title: "Galeri — GenSA Kidz",
@@ -8,7 +9,17 @@ export const metadata: Metadata = {
     "Galeri foto kegiatan terapi dan suasana ruang di GenSA Kidz Lamongan — momen asesmen, stimulasi, dan sesi terapi bersama tim kami.",
 };
 
-export default function GaleriPage() {
+export default async function GaleriPage() {
+  const gallery = await getGallery();
+
+  const toPhoto = (item: (typeof gallery)[number]) => ({
+    src: backendImage(item.ImagePath) || fallbackGalleryImage(item.Category, item.Caption) || "",
+    caption: item.Caption,
+  });
+
+  const aktivitas = gallery.filter((g) => g.Category === "aktivitas" && (g.ImagePath || fallbackGalleryImage(g.Category, g.Caption))).map(toPhoto);
+  const fasilitas = gallery.filter((g) => g.Category === "fasilitas" && (g.ImagePath || fallbackGalleryImage(g.Category, g.Caption))).map(toPhoto);
+
   return (
     <>
       <section className="bg-brand-100 px-5 py-16 md:px-8 md:py-20">
@@ -27,7 +38,7 @@ export default function GaleriPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8">
-        <GalleryTabs aktivitas={AKTIVITAS_PHOTOS} fasilitas={FASILITAS_PHOTOS} />
+        <GalleryTabs aktivitas={aktivitas} fasilitas={fasilitas} />
       </section>
     </>
   );

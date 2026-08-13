@@ -11,9 +11,9 @@ import {
   IconGrowth,
   IconClipboard,
 } from "@/components/icons";
-import { SERVICES } from "@/lib/services";
-import { SERVICE_IMAGES } from "@/lib/serviceImages";
-import FacilitiesList from "@/components/FacilitiesList";
+import { getServices, getFacilities, backendImage } from "@/lib/api";
+import { fallbackServiceImage, fallbackFacilityImage } from "@/lib/imageFallbacks";
+import FacilitiesList, { type FacilityItem } from "@/components/FacilitiesList";
 
 export const metadata: Metadata = {
   title: "Layanan — GenSA Kidz",
@@ -32,7 +32,16 @@ const ICONS = {
   clipboard: IconClipboard,
 };
 
-export default function LayananPage() {
+export default async function LayananPage() {
+  const [services, facilities] = await Promise.all([getServices(), getFacilities()]);
+
+  const facilityItems: FacilityItem[] = facilities.map((f) => ({
+    title: f.Title,
+    description: f.Description,
+    icon: (f.Icon as keyof typeof ICONS) || "heart",
+    image: backendImage(f.ImagePath) || fallbackFacilityImage(f.Title) || null,
+  }));
+
   return (
     <>
       <section className="bg-brand-100 px-5 py-16 md:px-8 md:py-20">
@@ -52,20 +61,20 @@ export default function LayananPage() {
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service) => {
-            const Icon = ICONS[service.icon];
-            const image = SERVICE_IMAGES[service.slug];
+          {services.map((service) => {
+            const Icon = ICONS[service.Icon as keyof typeof ICONS] || IconHeartHead;
+            const image = backendImage(service.ImagePath) || fallbackServiceImage(service.Slug);
             return (
               <Link
-                key={service.slug}
-                href={`/layanan/${service.slug}`}
+                key={service.Slug}
+                href={`/layanan/${service.Slug}`}
                 className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-15px_rgba(31,78,69,0.3)]"
               >
                 {image && (
                   <div className="relative aspect-[16/10] w-full overflow-hidden">
                     <Image
                       src={image}
-                      alt={service.title}
+                      alt={service.Title}
                       fill
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -77,9 +86,9 @@ export default function LayananPage() {
                     <Icon className="h-6 w-6" />
                   </span>
                   <h2 className="font-display text-lg font-semibold text-brand-950">
-                    {service.title}
+                    {service.Title}
                   </h2>
-                  <p className="text-sm leading-relaxed text-ink-soft">{service.short}</p>
+                  <p className="text-sm leading-relaxed text-ink-soft">{service.Short}</p>
                   <span className="mt-auto pt-2 text-sm font-semibold text-brand-800 underline decoration-marigold-500 decoration-2 underline-offset-4">
                     Lihat Detail Layanan
                   </span>
@@ -105,7 +114,7 @@ export default function LayananPage() {
               tua selama sesi berlangsung.
             </p>
           </div>
-          <FacilitiesList />
+          <FacilitiesList facilities={facilityItems} />
         </div>
       </section>
     </>

@@ -9,7 +9,6 @@ import {
   IconGrowth,
   IconClipboard,
 } from "./icons";
-import type { Service } from "@/lib/services";
 
 const ICONS = {
   speech: IconSpeech,
@@ -22,8 +21,10 @@ const ICONS = {
   clipboard: IconClipboard,
 };
 
-export default function ServiceCard({ service, id }: { service: Service; id?: string }) {
-  const Icon = ICONS[service.icon];
+export type ServiceCardView = { slug: string; title: string; icon: string; short: string };
+
+export default function ServiceCard({ service, id }: { service: ServiceCardView; id?: string }) {
+  const Icon = ICONS[service.icon as keyof typeof ICONS] || IconHeartHead;
   return (
     <Link
       href={`/layanan/${service.slug}`}

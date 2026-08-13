@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import ConsultationButton from "./ConsultationButton";
 import logo from "@/public/images/logo.png";
+import type { ApiBranch } from "@/lib/api";
 
 const NAV_LINKS = [
   { href: "/tentang", label: "Tentang Kami" },
@@ -15,7 +16,7 @@ const NAV_LINKS = [
   { href: "/kontak", label: "Kontak" },
 ];
 
-export default function Header() {
+export default function Header({ branches }: { branches?: ApiBranch[] }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -37,7 +38,10 @@ export default function Header() {
           ))}
         </nav>
 
-        <ConsultationButton className="hidden rounded-full bg-marigold-500 px-5 py-2.5 text-[15px] font-semibold text-brand-950 shadow-sm transition-transform hover:scale-[1.03] hover:bg-marigold-600 md:inline-block" />
+        <ConsultationButton
+          branches={branches}
+          className="hidden rounded-full bg-marigold-500 px-5 py-2.5 text-[15px] font-semibold text-brand-950 shadow-sm transition-transform hover:scale-[1.03] hover:bg-marigold-600 md:inline-block"
+        />
 
         <button
           type="button"
@@ -64,7 +68,10 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <ConsultationButton className="mt-2 rounded-full bg-marigold-500 px-5 py-2.5 text-center text-[15px] font-semibold text-brand-950" />
+          <ConsultationButton
+            branches={branches}
+            className="mt-2 rounded-full bg-marigold-500 px-5 py-2.5 text-center text-[15px] font-semibold text-brand-950"
+          />
         </nav>
       )}
     </header>

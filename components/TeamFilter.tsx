@@ -1,8 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import type { TeamMember } from "@/lib/team";
+import Image, { type StaticImageData } from "next/image";
+
+export type TeamMemberView = {
+  name: string;
+  role: string;
+  photo: string | StaticImageData | null;
+};
 
 const FILTERS = [
   { label: "Semua", role: null },
@@ -14,7 +19,7 @@ const FILTERS = [
   { label: "Guru Ortopedagogik", role: "Guru Ortopedagogik" },
 ] as const;
 
-export default function TeamFilter({ team }: { team: TeamMember[] }) {
+export default function TeamFilter({ team }: { team: TeamMemberView[] }) {
   const [active, setActive] = useState<string | null>(null);
   const filtered = active ? team.filter((m) => m.role === active) : team;
 
@@ -49,15 +54,17 @@ export default function TeamFilter({ team }: { team: TeamMember[] }) {
         <div className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
           {filtered.map((member) => (
             <div key={member.name} className="flex flex-col items-center gap-3 text-center">
-              <div className="relative aspect-square w-full overflow-hidden rounded-2xl shadow-[0_14px_30px_-15px_rgba(31,78,69,0.3)]">
-                <Image
-                  src={member.photo}
-                  alt={`${member.name} — ${member.role}`}
-                  fill
-                  sizes="(min-width: 1024px) 13vw, (min-width: 768px) 20vw, 30vw"
-                  className="object-cover"
-                />
-              </div>
+              {member.photo && (
+                <div className="relative aspect-square w-full overflow-hidden rounded-2xl shadow-[0_14px_30px_-15px_rgba(31,78,69,0.3)]">
+                  <Image
+                    src={member.photo}
+                    alt={`${member.name} — ${member.role}`}
+                    fill
+                    sizes="(min-width: 1024px) 13vw, (min-width: 768px) 20vw, 30vw"
+                    className="object-cover"
+                  />
+                </div>
+              )}
               <div>
                 <p className="text-sm font-semibold text-brand-900">{member.name}</p>
                 <p className="text-xs text-ink-faint">{member.role}</p>

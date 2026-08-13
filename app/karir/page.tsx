@@ -4,10 +4,8 @@ import ConsultationButton from "@/components/ConsultationButton";
 import DotGrid from "@/components/decor/DotGrid";
 import ZigzagAccent from "@/components/decor/ZigzagAccent";
 import karirTeam from "@/public/images/Foto Dayli GenSA Kidz/Gensa kidz Lamongan/Foto1.jpg";
-import { JOBS, APPLY_EMAIL } from "@/lib/jobs";
-import { AKTIVITAS_PHOTOS } from "@/lib/gallery";
-
-const ACTIVITY_PHOTOS = AKTIVITAS_PHOTOS.slice(0, 6);
+import { getJobs, getGallery, getBranches, getSettings, backendImage } from "@/lib/api";
+import { fallbackGalleryImage } from "@/lib/imageFallbacks";
 
 export const metadata: Metadata = {
   title: "Karir — GenSA Kidz",
@@ -30,15 +28,24 @@ const WHY_JOIN = [
   },
 ];
 
-function mailtoLink(jobTitle: string) {
+function mailtoLink(jobTitle: string, applyEmail: string) {
   const subject = encodeURIComponent(`Lamaran Kerja — ${jobTitle}`);
   const body = encodeURIComponent(
     `Halo tim GenSA Kidz,\n\nSaya ingin melamar posisi ${jobTitle}. Berikut saya lampirkan CV dan dokumen pendukung.\n\nTerima kasih.`
   );
-  return `mailto:${APPLY_EMAIL}?subject=${subject}&body=${body}`;
+  return `mailto:${applyEmail}?subject=${subject}&body=${body}`;
 }
 
-export default function KarirPage() {
+export default async function KarirPage() {
+  const [jobs, gallery, branches, settings] = await Promise.all([
+    getJobs(),
+    getGallery(),
+    getBranches(),
+    getSettings(),
+  ]);
+  const applyEmail = settings.apply_email || "resource@gensakidz.com";
+  const activityPhotos = gallery.filter((g) => g.Category === "aktivitas").slice(0, 6);
+
   return (
     <>
       <section className="bg-brand-100 px-5 py-16 md:px-8 md:py-20">
@@ -56,6 +63,7 @@ export default function KarirPage() {
             </p>
             <div className="mt-6">
               <ConsultationButton
+                branches={branches}
                 label="Tanya Info Lowongan"
                 className="inline-block rounded-full bg-brand-800 px-7 py-3.5 text-[15px] font-semibold text-surface shadow-sm transition-transform hover:scale-[1.02] hover:bg-brand-700"
               />
@@ -106,35 +114,35 @@ export default function KarirPage() {
           </p>
 
           <div className="mt-8 flex flex-col gap-6">
-            {JOBS.map((job) => (
+            {jobs.map((job) => (
               <div
-                key={job.slug}
+                key={job.Slug}
                 className="rounded-3xl border border-line bg-surface p-7 md:p-8"
               >
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
                       <h3 className="font-display text-xl font-semibold text-brand-950">
-                        {job.title}
+                        {job.Title}
                       </h3>
                       <span
                         className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                          job.status === "Dibuka"
+                          job.Status === "Dibuka"
                             ? "bg-leaf-200 text-leaf-500"
                             : "bg-surface-2 text-ink-faint"
                         }`}
                       >
-                        {job.status}
+                        {job.Status}
                       </span>
                     </div>
                     <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-faint">
-                      <span>📍 {job.branch}</span>
-                      <span>🕐 {job.type}</span>
+                      <span>📍 {job.Branch}</span>
+                      <span>🕐 {job.Type}</span>
                     </div>
                   </div>
-                  {job.status === "Dibuka" ? (
+                  {job.Status === "Dibuka" ? (
                     <a
-                      href={mailtoLink(job.title)}
+                      href={mailtoLink(job.Title, applyEmail)}
                       className="whitespace-nowrap rounded-full bg-brand-800 px-6 py-3 text-sm font-semibold text-surface transition-colors hover:bg-brand-700"
                     >
                       Lamar via Email
@@ -147,12 +155,12 @@ export default function KarirPage() {
                 </div>
 
                 <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
-                  {job.description}
+                  {job.Description}
                 </p>
 
                 <h4 className="mt-5 text-sm font-semibold text-brand-900">Persyaratan</h4>
                 <ul className="mt-2 space-y-1.5">
-                  {job.requirements.map((req) => (
+                  {job.Requirements.map((req) => (
                     <li key={req} className="flex gap-2.5 text-sm text-ink-soft">
                       <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-marigold-500" />
                       {req}
@@ -175,20 +183,24 @@ export default function KarirPage() {
             Momen sesi terapi dan stimulasi anak di GenSA Kidz Lamongan.
           </p>
           <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3">
-            {ACTIVITY_PHOTOS.map((item, i) => (
-              <div
-                key={i}
-                className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl"
-              >
-                <Image
-                  src={item.src}
-                  alt={item.caption}
-                  fill
-                  sizes="(min-width: 768px) 30vw, 45vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-            ))}
+            {activityPhotos.map((item) => {
+              const src = backendImage(item.ImagePath) || fallbackGalleryImage("aktivitas", item.Caption);
+              if (!src) return null;
+              return (
+                <div
+                  key={item.ID}
+                  className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl"
+                >
+                  <Image
+                    src={src}
+                    alt={item.Caption}
+                    fill
+                    sizes="(min-width: 768px) 30vw, 45vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              );
+            })}
           </div>
           <a
             href="/galeri"
@@ -205,14 +217,14 @@ export default function KarirPage() {
             </h2>
             <p className="mt-2 max-w-md text-[15px] text-brand-200">
               Kirimkan CV Anda ke{" "}
-              <a href={`mailto:${APPLY_EMAIL}`} className="underline decoration-marigold-400">
-                {APPLY_EMAIL}
+              <a href={`mailto:${applyEmail}`} className="underline decoration-marigold-400">
+                {applyEmail}
               </a>
               , tim kami akan menghubungi bila ada posisi yang sesuai.
             </p>
           </div>
           <a
-            href={`mailto:${APPLY_EMAIL}`}
+            href={`mailto:${applyEmail}`}
             className="whitespace-nowrap rounded-full bg-marigold-500 px-7 py-3.5 text-[15px] font-semibold text-brand-950 shadow-lg transition-transform hover:scale-[1.02] hover:bg-marigold-600"
           >
             Kirim CV via Email

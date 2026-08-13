@@ -5,7 +5,8 @@ import TeamFilter from "@/components/TeamFilter";
 import DotGrid from "@/components/decor/DotGrid";
 import ZigzagAccent from "@/components/decor/ZigzagAccent";
 import aboutHero from "@/public/images/foto terapis/Tentang kami.png";
-import { TEAM } from "@/lib/team";
+import { getTeam, getSettings, backendImage, misiToList } from "@/lib/api";
+import { fallbackTeamImage } from "@/lib/imageFallbacks";
 
 export const metadata: Metadata = {
   title: "Tentang Kami — GenSA Kidz",
@@ -13,17 +14,15 @@ export const metadata: Metadata = {
     "GenSA Kidz adalah pusat layanan terapi tumbuh kembang anak di Lamongan sejak 2020, didampingi tim psikolog anak dan terapis berpengalaman.",
 };
 
-const MISI = [
-  "Memberikan layanan deteksi dini yang komprehensif melalui asesmen menyeluruh guna memetakan potensi dan profil perkembangan unik setiap anak secara akurat sejak dini.",
-  "Menyusun program stimulasi dan intervensi yang dipersonalisasi guna memastikan setiap anak mendapatkan penanganan yang spesifik dan tepat sasaran sesuai dengan fase perkembangannya.",
-  "Menghadirkan pusat layanan terpadu satu atap yang mengintegrasikan berbagai disiplin terapi dan dukungan psikologi anak secara sinergis, memudahkan akses bagi orang tua dalam satu lokasi.",
-  "Menyelaraskan kolaborasi tim ahli lintas disiplin untuk memberikan solusi penanganan yang holistik, berkesinambungan, dan terkoordinasi bagi setiap tantangan tumbuh kembang anak.",
-  "Memberdayakan peran orang tua sebagai mitra utama melalui edukasi berkelanjutan dan komunikasi transparan, demi keberhasilan perkembangan anak yang konsisten baik di layanan maupun di rumah.",
-  "Menciptakan lingkungan yang inklusif, aman, dan penuh kasih yang menghargai keberagaman cara belajar setiap anak, sehingga mereka merasa nyaman dalam berekspresi dan berkembang.",
-  "Menjaga standar keunggulan layanan secara berkelanjutan dengan senantiasa mengikuti perkembangan ilmu pengetahuan dan teknologi terkini di bidang kesehatan dan tumbuh kembang anak.",
-];
+export default async function TentangPage() {
+  const [team, settings] = await Promise.all([getTeam(), getSettings()]);
+  const misi = misiToList(settings.misi || "");
+  const teamView = team.map((t) => ({
+    name: t.Name,
+    role: t.Role,
+    photo: backendImage(t.ImagePath) || fallbackTeamImage(t.Name) || null,
+  }));
 
-export default function TentangPage() {
   return (
     <>
       <section className="bg-brand-100 px-5 py-16 md:px-8 md:py-20">
@@ -71,17 +70,14 @@ export default function TentangPage() {
             Visi
           </span>
           <p className="mt-4 max-w-3xl font-display text-xl italic leading-relaxed text-brand-950 md:text-2xl">
-            “Menjadi pusat layanan tumbuh kembang anak secara inklusif yang terintegrasi
-            dengan program keberlanjutan anak sesuai dengan potensi perkembangannya, serta
-            memberikan pendampingan terbaik kepada keluarga dalam mewujudkan masa depan anak
-            secara optimal.”
+            “{settings.visi}”
           </p>
 
           <span className="mt-10 block text-xs font-semibold uppercase tracking-wide text-marigold-600">
             Misi
           </span>
           <ol className="mt-4 grid gap-4 md:grid-cols-2">
-            {MISI.map((item, i) => (
+            {misi.map((item, i) => (
               <li key={item} className="flex gap-3 text-[15px] leading-relaxed text-ink-soft">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-surface text-xs font-semibold text-brand-800">
                   {i + 1}
@@ -118,12 +114,9 @@ export default function TentangPage() {
             Tim Ahli Multidisiplin Kami
           </h2>
           <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-ink-soft">
-            Setiap anak mendapatkan penanganan yang komprehensif melalui kolaborasi lintas
-            divisi. Evaluasi tumbuh kembang dilakukan secara kolektif oleh tim terapis ahli
-            dan divalidasi langsung oleh Psikolog Klinis untuk memastikan ketajaman program
-            terapi yang dipersonalisasi.
+            {settings.tim_intro}
           </p>
-          <TeamFilter team={TEAM} />
+          <TeamFilter team={teamView} />
         </div>
       </section>
 

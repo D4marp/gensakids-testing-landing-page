@@ -1,17 +1,32 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BRANCHES } from "@/lib/branches";
+import type { ApiBranch } from "@/lib/api";
 
 const MESSAGE = "Halo GenSA Kidz, saya ingin konsultasi tumbuh kembang anak.";
+
+const FALLBACK_BRANCH: ApiBranch = {
+  ID: 0,
+  Slug: "lamongan",
+  Name: "GenSA Kidz Lamongan",
+  Address: "Ruko Tambakboyo Regency No. 01–02, Tikung, Lamongan, Jawa Timur 62281",
+  WhatsApp: "6281311992012",
+  Phone: "0322314966",
+  MapsQuery: "",
+  MapsURL: "",
+  Schedules: [],
+};
 
 export default function ConsultationButton({
   className,
   label = "Daftar Konsultasi",
+  branches,
 }: {
   className?: string;
   label?: string;
+  branches?: ApiBranch[];
 }) {
+  const list = branches && branches.length > 0 ? branches : [FALLBACK_BRANCH];
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -57,15 +72,15 @@ export default function ConsultationButton({
               Terhubung langsung dengan tim kami via WhatsApp.
             </p>
             <div className="mt-6 flex flex-col gap-3">
-              {BRANCHES.map((branch) => (
+              {list.map((branch) => (
                 <a
-                  key={branch.slug}
-                  href={`https://wa.me/${branch.whatsapp}?text=${encodeURIComponent(MESSAGE)}`}
+                  key={branch.Slug}
+                  href={`https://wa.me/${branch.WhatsApp}?text=${encodeURIComponent(MESSAGE)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-full bg-brand-800 px-6 py-3 text-center text-sm font-semibold text-surface transition-colors hover:bg-brand-700"
                 >
-                  Chat {branch.name} via WhatsApp
+                  Chat {branch.Name} via WhatsApp
                 </a>
               ))}
               <a

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
+import { getBranches } from "@/lib/api";
 
 const baloo = Baloo_2({
   subsets: ["latin"],
@@ -23,11 +24,12 @@ export const metadata: Metadata = {
     "GenSA Kidz adalah pusat layanan terapi tumbuh kembang anak di Lamongan: terapi wicara, terapi okupasi, fisioterapi, terapi perilaku, ortopedagogik, psikologi anak, dan stimulasi anak usia 0–16 tahun.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const branches = await getBranches();
   return (
     <html lang="id" className={`${baloo.variable} ${plusJakarta.variable}`}>
       <body className="font-body antialiased">
-        <Header />
+        <Header branches={branches} />
         <main>{children}</main>
         <Footer />
         <WhatsAppFloatButton />

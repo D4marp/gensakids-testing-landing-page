@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image, { type StaticImageData } from "next/image";
 
-type Photo = { src: StaticImageData; caption: string; position?: string };
+type Photo = { src: string | StaticImageData; caption: string; position?: string };
 
 export default function GalleryTabs({
   aktivitas,
