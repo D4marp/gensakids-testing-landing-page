@@ -154,19 +154,37 @@ export default async function KarirPage() {
                   )}
                 </div>
 
-                <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
-                  {job.Description}
-                </p>
+                {backendImage(job.ImagePath) && (
+                  <div className="relative mt-5 aspect-[4/3] w-full max-w-md overflow-hidden rounded-2xl border border-line sm:aspect-[3/4]">
+                    <Image
+                      src={backendImage(job.ImagePath)!}
+                      alt={`Flyer lowongan ${job.Title}`}
+                      fill
+                      sizes="(min-width: 768px) 400px, 90vw"
+                      className="object-cover"
+                    />
+                  </div>
+                )}
 
-                <h4 className="mt-5 text-sm font-semibold text-brand-900">Persyaratan</h4>
-                <ul className="mt-2 space-y-1.5">
-                  {job.Requirements.map((req) => (
-                    <li key={req} className="flex gap-2.5 text-sm text-ink-soft">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-marigold-500" />
-                      {req}
-                    </li>
-                  ))}
-                </ul>
+                {job.Description && (
+                  <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
+                    {job.Description}
+                  </p>
+                )}
+
+                {job.Requirements.length > 0 && (
+                  <>
+                    <h4 className="mt-5 text-sm font-semibold text-brand-900">Persyaratan</h4>
+                    <ul className="mt-2 space-y-1.5">
+                      {job.Requirements.map((req) => (
+                        <li key={req} className="flex gap-2.5 text-sm text-ink-soft">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-marigold-500" />
+                          {req}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
               </div>
             ))}
           </div>

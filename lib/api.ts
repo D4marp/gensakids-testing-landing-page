@@ -59,6 +59,7 @@ export type ApiJob = {
   Status: string;
   Description: string;
   Requirements: string[];
+  ImagePath: string;
   SortOrder: number;
 };
 
