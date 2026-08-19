@@ -4,11 +4,11 @@
 // time instead of the old hardcoded lib/*.ts files.
 
 export const BACKEND_URL =
-  process.env.NEXT_PUBLIC_BACKEND_URL || "http://gensakidz-dashboard.paas.hcm-lab.id";
+  process.env.NEXT_PUBLIC_BACKEND_URL || "https://dashboard.gensakidz.com";
 
-// Revalidate every 5 minutes — content changes in the dashboard don't need
-// to be instant, and this keeps the site fast without being fully static.
-const REVALIDATE_SECONDS = 300;
+// Revalidate every minute — fast enough that admin edits show up quickly,
+// while still caching so the site isn't hitting the backend on every request.
+const REVALIDATE_SECONDS = 60;
 
 async function apiGet<T>(path: string, fallback: T): Promise<T> {
   try {
